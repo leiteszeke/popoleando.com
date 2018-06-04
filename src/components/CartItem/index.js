@@ -30,7 +30,7 @@ class CartItem extends Component {
             <div className={ (this.state.active ? `active ` : ``) + `product` }>
                 <img src={ Pizza } alt="Product" />      
                 <h2>{ this.props.name }</h2>
-                <Stars />
+                <Stars value={ this.props.stars } />
                 <p className="unit">{ this.props.salesUnit }</p>
                 <p className="price">$ { this.props.price }</p>
                 <Counter parent={ this } fractionable={ this.props.fractionable } step={ this.state.step } value={ this.props.quantity } />

@@ -37,7 +37,7 @@ class Cart extends Component {
     render() {
         return (
             <div id="cart" className="wrapper">
-                <Header backButton backUrl="/products" />   
+                <Header backButton action="back" />   
                 <div className="content">
                     <h1>Carrito de Compras</h1>
                     { this.state.order.user_items.map( (item) => {
@@ -50,6 +50,7 @@ class Cart extends Component {
                             parent={ this }
                             productId={ item.product_id }
                             quantity={ item.quantity } 
+                            stars={ item.product.stars }
                             salesUnit={ item.product.sales_unit } 
                         /> 
                     }) }

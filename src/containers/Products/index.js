@@ -33,7 +33,7 @@ class Products extends Component {
     render() {
         return (
             <div id="products" className="wrapper">
-                <Header backButton backUrl="/" />   
+                <Header backButton backUrl="/" showCartBasket />   
                 <div className="content">
                     <h1>{ this.state.category.name }</h1>
                     { this.state.category.products.map( (product) => {

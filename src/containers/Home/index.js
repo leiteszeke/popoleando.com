@@ -34,7 +34,7 @@ class Home extends Component {
     render() {
         return (
             <div id="home" className="wrapper">
-                <Header />   
+                <Header showCartBasket />   
                 <div className="content">
                     { this.state.categories.map( (category) => {
                         return (
