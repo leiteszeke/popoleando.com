@@ -7,10 +7,13 @@ class Counter extends Component {
         this.state = {
             value: 0
         }
+
+        this.changeQuantity = this.changeQuantity.bind(this);   
     }
 
     componentDidMount() {
-        this.setState({ value: this.props.value });
+        let itemValue = this.props.fractionable === 1 ? parseFloat(this.props.value) : parseInt(this.props.value, 10);
+        this.setState({ value: itemValue });
     }
 
     render() {
@@ -26,14 +29,25 @@ class Counter extends Component {
     decrement() {
         if (this.state.value > 0) {
             let newValue = parseFloat(this.state.value) - parseFloat(this.props.step);
-            newValue = newValue < 0 ? 0 : newValue;
-            this.setState({ value: parseFloat(newValue).toFixed(2) });
+            newValue = newValue < 0 ? 0 : (this.props.fractionable === 1 ? parseFloat(newValue) : parseInt(newValue, 10));
+
+            this.setState({ value: newValue }, () => {
+                this.changeQuantity();
+            });
         }
+    }
+
+    changeQuantity() {
+        this.props.parent.setQuantity(this.state.value);
     }
 
     increment() {
         let newValue = parseFloat(this.state.value) + parseFloat(this.props.step);
-        this.setState({ value: parseFloat(newValue).toFixed(2) });
+        newValue = this.props.fractionable === 1 ? parseFloat(newValue) : parseInt(newValue, 10);
+
+        this.setState({ value: newValue }, () => {
+            this.changeQuantity();
+        });
     }
 }
 

@@ -10,7 +10,7 @@ html, body {
 }
 
 body {
-    background: $extendeal-stewie;
+    background: $extendeal-wario;
 
     > #root {
         min-height: 100%;
@@ -20,49 +20,14 @@ body {
             min-height: 100%;
             width: 100%;
         }
-
-        .background {
-            background: $extendeal-mario;
-            height: 100%;
-            left: 0;
-            position: fixed;
-            top: 0;
-            transition: 500ms;
-            width: 0%;
-            z-index: 1;
-        }
-
-        &.start {
-            .background {
-                width: 25%;
-            }
-        }
-    
-        &.middle {
-            .background {
-                width: 60%;
-            }
-        }
-    
-        &.finish {
-            .background {
-                width: 100%;
-            }
-        }
     }
 
     .wrapper {
-        height: auto;
-        min-height: 100%;
-        left: 0;
-        position: absolute;
-        top: 0;
-        width: 100%;
-        z-index: 2;
+        padding-bottom: 20px;
     }
 
     .content {
-        padding-top: 70px;
+        padding-top: 90px;
     }
     
 }

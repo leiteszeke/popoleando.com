@@ -1,13 +1,14 @@
 header {
+  background: $extendeal-mario;
   display: flex;
   height: 70px;
   position: fixed;
   width: 100%;
   z-index: 5;
+  @include shadow2;
 
   .header-left {
     align-items: center;
-    background: $extendeal-mario;
     display: flex;
     height: 100%;
     justify-content: flex-start;
@@ -25,7 +26,6 @@ header {
 
   .header-right {
     align-items: center;
-    background: $extendeal-stewie;
     display: flex;
     height: 100%;
     justify-content: flex-end;
@@ -75,7 +75,6 @@ header {
       }
 
       .header-right {
-        background: $extendeal-mario;
         width: 40%; 
       }
     }

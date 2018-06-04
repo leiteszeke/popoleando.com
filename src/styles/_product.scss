@@ -3,6 +3,7 @@
   border-radius: 10px;
   display: flex;
   flex-wrap: wrap;
+  height: 110px;
   margin: 5% 10%;
   min-height: 100px;
   padding: 15px;
@@ -23,6 +24,8 @@
     font-size: 18px;
     line-height: 20px;
     margin-left: 45px;
+    max-height: 40px;
+    overflow: hidden;
     width: calc(100% - 45px);
     @include main-font;
     @include semibold;
@@ -31,15 +34,6 @@
   p {
     @include main-font;
     @include semibold;
-
-    &.text {
-      margin-left: 45px;
-      max-height: 0;
-      overflow: hidden;
-      transition: 1s;
-      width: calc(100% - 45px);
-      @include regular;
-    }
 
     &.unit {
       color: $extendeal-lois;
@@ -70,23 +64,5 @@
     transition: 1s;
     width: 30px;
     @include shadow2;
-  }
-
-  &.active {
-    h2 {
-      margin-top: 10px;
-    }
-
-    p.text {
-      max-height: 200px;
-      margin-bottom: 10px;
-      margin-top: 10px;
-      transition: 1s;
-    }
-
-    i.button {
-      margin-top: 61%;
-      transition: 1s;
-    }
   }
 }

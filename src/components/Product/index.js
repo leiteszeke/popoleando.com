@@ -9,33 +9,21 @@ class Product extends Component {
         super();
         
         this.state = {
-            active: false,
             product: {}
         }
     }
 
-    componentDidMount() {
-        if (this.props.active)
-           this.setState({ active: this.props.active });
-    }
-
     render() {
         return (
-            <div onClick={ () => this.toggleProduct() } className={ (this.state.active ? `active ` : ``) + `product` }>
+            <div className="product">
                 <img src={ Pizza } alt={ this.props.name } />      
                 <h2>{ this.props.name }</h2>
-                <p className="text">{ this.props.description }</p>
                 <Stars />
                 <p className="unit">{ this.props.salesUnit }</p>
                 <p className="price">$ { this.props.price }</p>
                 <i onClick={ (e) => this.addProduct(e) } className="button fa fa-plus"></i>
             </div>
         );
-    }
-
-    toggleProduct() {
-        let isActive = this.state.active;
-        this.setState({ active: !isActive });
     }
 
     addProduct(e) {

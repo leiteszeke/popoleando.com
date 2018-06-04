@@ -1,14 +1,17 @@
 #cart {
     .content {
+        padding-bottom: 30px;
+
         h1 {
             padding-left: 40px;
         }
     }
 
     .summary {
-        background: $extendeal-stewie;
+        background: $extendeal-mario;
         border-radius: 30px 30px 0 0;
         bottom: 0;
+        color: $white;
         max-height: 300px;
         padding: 20px 30px 20px 30px;
         position: fixed;
@@ -52,7 +55,7 @@
                 }
 
                 &.color {
-                    color: $extendeal-mario;
+                    color: $extendeal-wario;
                 }
             }
         }
@@ -62,9 +65,9 @@
             margin-top: 20px;
 
             i {
-                border: 1px solid $extendeal-lois;
+                border: 1px solid $white;
                 border-radius: 15px;
-                color: $extendeal-lois;
+                color: $white;
                 font-size: 14px;
                 height: 30px;
                 line-height: 28px;
@@ -75,9 +78,9 @@
             }
 
             button {
-                background: $extendeal-mario;
+                background: $white;
                 border-radius: 20px;
-                color: $extendeal-stewie;
+                color: $extendeal-mario;
                 float: right;
                 height: 40px;
                 padding: 0 20px;
