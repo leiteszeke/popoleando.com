@@ -1,0 +1,90 @@
+.cart_item {
+  background: $white;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5% 10%;
+  min-height: 100px;
+  padding: 15px;
+  width: 80%;
+  @include shadow2;
+
+  > img {
+    border-radius: 35px;
+    height: 70px;
+    margin-left: -40px;
+    position: absolute;
+    width: 70px;
+    @include shadow2;
+  }
+
+  h2 {
+    align-self: center;
+    font-size: 18px;
+    line-height: 20px;
+    margin-left: 45px;
+    width: calc(100% - 45px);
+    @include main-font;
+    @include semibold;
+  }
+
+  p {
+    @include main-font;
+    @include semibold;
+
+    &.text {
+      height: 0;
+      margin-left: 45px;
+      overflow: hidden;
+      transition: 1s;
+      width: calc(100% - 45px);
+      @include regular;
+    }
+
+    &.unit {
+      color: $extendeal-lois;
+      font-size: 15px;
+      margin-left: 45px;
+      width: calc((100% - 45px) / 2);  
+    }
+
+    &.price {
+      color: $extendeal-mario;
+      font-size: 16px;
+      padding-right: 10px;
+      text-align: right;
+      width: calc((100% - 45px) / 2);  
+    }
+  }
+
+  i.button {
+    background: $white;
+    border-radius: 15px;
+    color: $extendeal-mario;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 20px;
+    position: absolute;
+    right: 20px;
+    text-align: center;
+    width: 30px;
+    @include shadow2;
+  }
+
+  &.active {
+    h2 {
+      margin-top: 10px;
+    }
+
+    p.text {
+      height: auto;
+      margin-bottom: 10px;
+      margin-top: 10px;
+      transition: 1s;
+    }
+
+    i.button {
+      margin-top: 63%;
+    }
+  }
+}

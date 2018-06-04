@@ -1,0 +1,83 @@
+header {
+  display: flex;
+  height: 70px;
+  position: fixed;
+  width: 100%;
+  z-index: 5;
+
+  .header-left {
+    align-items: center;
+    background: $extendeal-mario;
+    display: flex;
+    height: 100%;
+    justify-content: flex-start;
+    padding-left: 30px;
+    transition: 500ms;
+    width: 0%;
+    
+    i {
+      color: $white;
+      font-size: 20px;
+      text-align: center;
+      width: 30px;
+    }
+  }
+
+  .header-right {
+    align-items: center;
+    background: $extendeal-stewie;
+    display: flex;
+    height: 100%;
+    justify-content: flex-end;
+    padding-right: 30px;
+    
+    i {
+      color: $white;
+      font-size: 18px;
+      text-align: center;
+      width: 30px;
+    }
+  }
+}
+
+#root {
+  &.start {
+     
+    header {
+      .header-left {
+        width: 25%; 
+      }
+
+      .header-right {
+        width: 75%; 
+      }
+    }
+  }
+
+  &.middle {
+    
+    header {
+      .header-left {
+        width: 60%; 
+      }
+
+      .header-right {
+        width: 40%; 
+      }
+    }
+  }
+
+  &.finish {
+    
+    header {
+      .header-left {
+        width: 60%; 
+      }
+
+      .header-right {
+        background: $extendeal-mario;
+        width: 40%; 
+      }
+    }
+  }
+}

@@ -1,0 +1,85 @@
+@function str-split($string, $separator) {
+  // empty array/list
+  $split-arr: ();
+  // first index of separator in string
+  $index : str-index($string, $separator);
+  // loop through string
+  @while $index != null {
+      // get the substring from the first character to the separator
+      $item: str-slice($string, 1, $index - 1);
+      // push item to array
+      $split-arr: append($split-arr, $item);
+      // remove item and separator from string
+      $string: str-slice($string, $index + 1);
+      // find new index of separator
+      $index : str-index($string, $separator);
+  }
+  // add the remaining string to list (the last item)
+  $split-arr: append($split-arr, $string);
+
+  @return $split-arr;
+}
+
+
+@mixin mask_size($props){
+  -webkit-mask-size: $props;
+  -moz-mask-size: $props;
+  -ms-mask-size: $props;
+  mask-size: $props;
+}
+
+@mixin mask_image($props){
+  -webkit-mask-image: $props;
+  -moz-mask-image: $props;
+  -ms-mask-image: $props;
+  mask-image: $props;
+  -webkit-mask-repeat: no-repeat;
+  -moz-mask-repeat: no-repeat;
+  -ms-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -moz-mask-position: center;
+  -ms-mask-position: center;
+  mask-position: center;
+}
+
+@mixin mask_repeat($props){
+  -webkit-mask-repeat: $props;
+  -moz-mask-repeat: $props;
+  -ms-mask-repeat: $props;
+  mask-repeat: $props;
+}
+
+@mixin mask_as($img,$positions: center center,$size: 100% 100%){
+  -webkit-mask-image: $props;
+  -moz-mask-image: $props;
+  -ms-mask-image: $props;
+  mask-image: $props;
+}
+
+@mixin center_by_translate($postion : absolute) {
+  position:$postion;
+  left: 50%;
+  top: 50%;
+  -webkit-transform:translate(-50%,-50%);
+  -moz-transform:translate(-50%,-50%); 
+  -ms-transform:translate(-50%,-50%); 
+  -o-transform:translate(-50%,-50%); 
+  transform:translate(-50%,-50%); 
+}
+
+@mixin rotate($degrees) {  
+  -webkit-transform: rotate($degrees + deg);
+  -moz-transform: rotate($degrees + deg);
+  -ms-transform: rotate($degrees + deg);
+  -o-transform: rotate($degrees + deg);
+  transform: rotate($degrees + deg);
+}
+
+@mixin rotateX($degrees) {  
+  -webkit-transform: rotateX($degrees + deg);
+  -moz-transform: rotateX($degrees + deg);
+  -ms-transform: rotateX($degrees + deg);
+  -o-transform: rotateX($degrees + deg);
+  transform: rotateX($degrees + deg);
+}

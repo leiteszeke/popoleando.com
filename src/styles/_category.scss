@@ -1,0 +1,53 @@
+.category {
+  background: $white;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100px;
+  margin: 5% 10%;
+  padding: 15px;
+  width: 80%;
+  @include shadow2;
+
+  > img {
+    border-radius: 35px;
+    height: 70px;
+    margin-left: -40px;
+    position: absolute;
+    width: 70px;
+    @include shadow2;
+  }
+
+  h2 {
+    align-self: center;
+    font-size: 26px;
+    line-height: 40px;
+    margin-left: 45px;
+    width: calc(100% - 45px);
+    @include main-font;
+    @include bold;
+  }
+
+  p {
+    color: $extendeal-lois;
+    font-size: 15px;
+    margin-left: 45px;
+    width: calc(100% - 45px);
+    @include main-font;
+    @include semibold;
+  }
+
+  a {
+    background: $white;
+    border-radius: 15px;
+    color: $black;
+    height: 30px;
+    left: 100%;
+    line-height: 30px;
+    position: relative;
+    text-align: center;
+    top: -40px;
+    width: 30px;
+    @include shadow2;
+  }
+}

@@ -1,0 +1,119 @@
+/////////////////////////////
+// Layout
+/////////////////////////////
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+/////////////////////////////
+// Dimensions
+/////////////////////////////
+
+$header-height: 48px;
+$header-height-mobile: 56px;
+$navbar-width: 56px;
+$navbar-height-mobile: 48px;
+$sidebar-width: 56px;
+$navbar-sidebar-width: 112px;
+$sidebar-width-expanded: 180px;
+$sidebar-width-compressed: -124px;
+$admin-sidebar-width: 192px;
+$new-order-header-height: 72px;
+$new-order-header-height-mobile: 48px;
+$cart-width: 35%;
+$item-set-left-margin: 7%;
+
+/////////////////////////////
+// Constants
+/////////////////////////////
+
+$darken: 4%;
+$darken-active: 10%;
+$lighten: 2%;
+
+/////////////////////////////
+// Fonts
+/////////////////////////////
+
+@mixin main-font{
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+}
+
+@mixin light{
+  font-weight: 200;
+}
+@mixin regular{
+  font-weight: 400;
+}
+
+@mixin semi-bold{
+  font-weight: 600;
+}
+
+@mixin bold{
+  font-weight: 700;
+}
+
+/////////////////////////////
+// Text Styles
+/////////////////////////////
+.text-uppercase{
+  text-transform: uppercase;
+}
+
+a {
+  text-decoration: none;
+}
+
+/////////////////////////////
+// Mixins
+/////////////////////////////
+@mixin input-placeholder {
+  @content;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (min-width: 1025px) {
+  .desktop-hidden {
+    display: none !important;
+  }
+
+  .mobile-hidden {}
+}
+
+@media (max-width: 1024px) {
+  .desktop-hidden {}
+
+  .mobile-hidden {
+    display: none !important;
+  }
+}
+
+/////////////////////////////
+// Layouts
+/////////////////////////////
+
+input[type="text"], input[type="email"], input[type="password"], textarea {
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+
+input, button {
+  border: none;
+  outline: none;
+}
+
+.clearfix {
+  clear: both;
+}
+
+/////////////////////////////
+// Families
+/////////////////////////////
+$families: alcoholic-beverage appliance anchor audio bakery barra bed-linen bazar beer cake carpentry carpet cheese chicken cigarette cleaning coffee deer disposable drinks eggs electric electronic energizante espumante flower-shop finished frozen frog fruits-and-vegetables goat gooze grocery ice-cream-ball ice-cream ice ironmongery kitchen library lunch-meat manteinance meat merchandising milk nut paint pasta pork sausages seafood tableware uniform wood aguas postres AACsala aderezos asiento-inodoro bacha bacha-acero calefaccion cordero decoracion desayuno descartables electronica empanadas ensaladas envasados extractor floreria granja griferia-bidet griferia-ducha hojas infusiones ingredientes jabonera kiosco lenia llama manteleria marroquineria menu nespresso oficina parilla pasteleria pato percha piso pizza press portarollo portatoalla portavaso proteinas queso regalos sillon ship-a ship-f ship-j ship-s tarta vinos vinoteca x1 x2 oriental-products wild-pig partridge rabbit rhea snail turkey-cook plains-vizcacha vegetable sweet-bread fry-vegetable season-fruit fruit nuts sheets;

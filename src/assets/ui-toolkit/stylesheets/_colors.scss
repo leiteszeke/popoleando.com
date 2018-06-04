@@ -1,0 +1,166 @@
+// Colors
+
+/////////////////////////////
+// Standard Colors
+/////////////////////////////
+
+$white: #FFFFFF;
+$black: #000000;
+
+/////////////////////////////
+// Color Pallete | Primary
+/////////////////////////////
+
+$extendeal-garfield: #FF6300;
+$extendeal-beavis: #04273F;
+$extendeal-butthead: #0B2033;
+$extendeal-stewart: #0A1827;
+$extendeal-duffman: #8BC9EA;
+$extendeal-milhouse: #6DAFD9;
+
+$extendeal-mario: #FF3030;
+$extendeal-wario: #FFAE00;
+$extendeal-luigi: #00BD63;
+$extendeal-peach: #FC5B4F;
+
+$extendeal-brian: #F2F2F2;
+$extendeal-stewie: #EDEDED;
+$extendeal-cris: #E6E7E8;
+$extendeal-meg: #D7DADD;
+$extendeal-lois: #AEAEAF;
+$extendeal-peter: #666666;
+$extendeal-glenn: #333333;
+
+$extendeal-agro-green-primary: #1E8301;
+$extendeal-agro-green-secondary: #4AB549; 
+
+$extendeal-shadow-color: rgba($black, .2);
+
+$primary-names: garfield, beavis, butthead, stewart, duffman, milhouse, mario, wario, luigi, peach;
+$agro-names: primary, secondary;
+$gray-names: brian, stewie, cris, mes, lois, peter, glenn;
+
+$primary-colors: $extendeal-garfield, $extendeal-beavis, $extendeal-butthead, $extendeal-stewart, $extendeal-duffman, $extendeal-milhouse, $extendeal-mario, $extendeal-wario, $extendeal-luigi, $extendeal-peach;
+$agro-colors: $extendeal-agro-green-primary, $extendeal-agro-green-secondary;
+$gray-scale: $extendeal-brian, $extendeal-stewie, $extendeal-cris, $extendeal-meg, $extendeal-lois, $extendeal-peter, $extendeal-glenn;
+
+/////////////////////////////
+// Color Pallete | Secondary
+/////////////////////////////
+
+$dp-color1: #448aff;
+$dp-color2: #ffb74d;
+$dp-color3: #e57373;
+$dp-color4: #9ccc65;
+$dp-color5: #9575cd;
+
+$dp-color6: #ffd54f;
+$dp-color7: #f06292;
+$dp-color8: #0097a7;
+$dp-color9: #ba68c8;
+$dp-color10: #ff8a65;
+
+$dp-color11: #0277bd;
+$dp-color12: #81c784;
+$dp-color13: #999999;
+$dp-color14: #4dd0e1;
+$dp-color15: #dce775;
+
+$dp-color16: #a1887f;
+$dp-color17: #ffab91;
+$dp-color18: #c5e1a5;
+$dp-color19: #4db6ac;
+$dp-color20: #7986cb;
+
+$dp-colors: $dp-color1, $dp-color2, $dp-color3, $dp-color4, $dp-color5, $dp-color6, $dp-color7, $dp-color8, $dp-color9, $dp-color10, $dp-color11, $dp-color12, $dp-color13, $dp-color14, $dp-color15, $dp-color16, $dp-color17, $dp-color18, $dp-color19, $dp-color20;
+
+/////////////////////////////
+// Color Styles
+/////////////////////////////
+
+@for $i from 1 through length($primary-names) {
+  .bg-#{nth($primary-names, $i)}{
+    $color: nth($primary-colors, $i);
+    background: $color;
+    #{--color}: $color;
+    #{--hover-color}: rgba($color, 0.1);
+    #{--active-color}: rgba($color, 0.25);
+    #{--lighten-color}: lighten($color, $lighten);
+    #{--darken-color}: darken($color, $darken);
+    #{--darken-active-color}: darken($color, $darken-active);
+  }
+
+  .color-#{nth($primary-names, $i)}{
+    $color: nth($primary-colors, $i);
+    color: $color !important;
+    #{--color}: $color;
+  }
+}
+
+@for $i from 1 through length($gray-names) {
+  .bg-#{nth($gray-names, $i)}{
+    $color: nth($gray-scale, $i);
+    background: $color;
+    #{--color}: $color;
+    #{--hover-color}: rgba($color, 0.1);
+    #{--active-color}: rgba($color, 0.25);
+    #{--lighten-color}: lighten($color, $lighten);
+    #{--darken-color}: darken($color, $darken);
+    #{--darken-active-color}: darken($color, $darken-active);
+  }
+
+  .color-#{nth($gray-names, $i)}{
+    $color: nth($gray-scale, $i);
+    color: $color !important;
+    #{--color}: $color;
+  }
+}
+
+@for $i from 1 through length($agro-names) {
+  .bg-#{nth($agro-names, $i)}{
+    $color: nth($agro-colors, $i);
+    background: $color;
+    #{--color}: $color;
+    #{--hover-color}: rgba($color, 0.1);
+    #{--active-color}: rgba($color, 0.25);
+    #{--lighten-color}: lighten($color, $lighten);
+    #{--darken-color}: darken($color, $darken);
+    #{--darken-active-color}: darken($color, $darken-active);
+  }
+
+  .color-#{nth($agro-names, $i)}{
+    $color: nth($agro-colors, $i);
+    color: $color !important;
+    #{--color}: $color;
+  }
+}
+
+.white {
+  color: $white;
+}
+
+.bg-white {
+  $color: $white;
+  background: $color;
+  #{--color}: $color;
+  #{--hover-color}: rgba($color, 0.1);
+  #{--active-color}: rgba($color, 0.25);
+  #{--lighten-color}: lighten($color, $lighten);
+  #{--darken-color}: darken($color, $darken);
+  #{--darken-active-color}: darken($color, $darken-active);
+}
+
+.black {
+  color: $black;
+}
+
+.bg-black { 
+  $color: $black;
+  background: $color;
+  #{--color}: $color;
+  #{--hover-color}: rgba($color, 0.1);
+  #{--active-color}: rgba($color, 0.25);
+  #{--lighten-color}: lighten($color, $lighten);
+  #{--darken-color}: darken($color, $darken);
+  #{--darken-active-color}: darken($color, $darken-active);
+}

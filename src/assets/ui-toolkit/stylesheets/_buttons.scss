@@ -1,0 +1,272 @@
+/////////////////////////////
+// Reset Buttons
+/////////////////////////////
+
+button {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  outline: 0;
+}
+
+/////////////////////////////
+// Custom Styles
+/////////////////////////////
+
+.floating-button {
+  @include shadow2;
+
+  &:hover {
+    background: var(--lighten-color);
+  }
+
+  &:active {
+    background: var(--lighten-color);
+    box-shadow: none;
+    transform: translateY(4px);
+  }
+  
+  &.disabled {
+    background: $extendeal-stewie;
+    color: $extendeal-meg;
+    cursor: default;
+
+    &:hover {
+      background: $extendeal-stewie;
+    }
+
+    &:active {
+      background: $extendeal-stewie;
+      transform: none;
+      @include shadow2;
+    }
+  }
+}
+
+.round-button {
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  height: 48px;
+  outline: none;
+  width: 48px;
+  
+  & > i {
+    font-size: 20px;
+    line-height: 48px;
+  }
+}
+
+.classic-button {
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  height: 36px;
+  margin-right: 8px;
+  line-height: 14px;
+  outline: none;
+  padding: 0px 16px;
+  width: auto;
+
+  @include main-font;
+  @include semi-bold;
+  
+  & > i {
+    font-size: 14px;
+    line-height: 36px;
+    margin-right: 4px;
+  }
+
+  & > p {
+    display: inline-block;
+    line-height: 36px;
+    margin: 0;
+  }
+
+  &:hover {
+    background: var(--lighten-color);
+  }
+
+  &:active {
+    background: var(--darken-color);
+  }
+
+  &.disabled {
+    background: $extendeal-stewie;
+    color: $extendeal-meg !important;
+    cursor: default;
+  }
+}
+
+.outline-button {
+  background: none;
+  border: 1px solid var(--color);
+  border-radius: 4px;
+  color: var(--color);
+  cursor: pointer;
+  font-size: 14px;
+  height: 36px;
+  margin-right: 8px;
+  outline: none;
+  padding: 0px 16px;
+  width: auto;
+
+  @include main-font;
+  @include semi-bold;
+  
+  & > i {
+    font-size: 14px;
+    line-height: 34px;
+    margin-right: 4px;
+  }
+
+  & > p {
+    display: inline-block;
+    line-height: 34px;
+    margin: 0;
+  }
+
+  &:hover {
+    background: var(--hover-color);
+  }
+  
+  &:active {
+    background: var(--active-color);
+  }
+
+  &.disabled {
+    border: 1px solid $extendeal-stewie;
+    color: $extendeal-meg;
+    cursor: default;
+
+    &:hover, &:active {
+      background: none;
+    }
+  }
+}
+
+.flat-button {
+  background: none;
+  border: none;
+  border-radius: 4px;
+  color: var(--color);
+  cursor: pointer;
+  font-size: 14px;
+  height: 36px;
+  margin: 8px;
+  outline: none;
+  padding: 0px 8px;
+  width: auto;
+
+  @include main-font;
+  @include semi-bold;
+  
+  & > i {
+    font-size: 14px;
+    line-height: 36px;
+    margin-right: 4px;
+  }
+
+  & > p {
+    display: inline-block;
+    line-height: 36px;
+    margin: 0;
+  }
+
+  &:hover {
+    background: var(--hover-color);
+  }
+  
+  &:active {
+    background: var(--active-color);
+  }
+
+  &.disabled {
+    color: $extendeal-meg;
+    cursor: default;
+
+    &:hover, &:active {
+      background: none;
+    }
+  }
+}
+
+.icon-button {
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 36px;
+  margin-right: 8px;
+  padding: 0 8px;
+  outline: none;
+  width: 36px;
+
+  &:hover {
+    background: var(--lighten-color);
+  }
+
+  &:active {
+    background: var(--darken-color);
+  }
+
+  &.active {
+    color: $white;
+    background: var(--darken-active-color);
+    box-shadow: inset 0 0 9px rgba(11, 35, 51, 0.6);
+  }
+
+  &.disabled {
+    background: $extendeal-stewie;
+    color: $extendeal-meg;
+
+    &:hover, &:active {
+      box-shadow: none;
+      cursor: default;
+    }
+  }
+}
+
+.switchable-button {
+  border: none;
+  border-radius: none;
+  cursor: pointer;
+  height: 36px;
+  padding: 8px;
+  outline: none;
+  width: 36px;
+
+  &.first {
+    border-radius: 4px 0 0 4px;
+    margin-left: 8px;
+  }
+
+  &.last {
+    border-radius: 0 4px 4px 0;
+    margin-right: 8px;
+  }
+
+  &:hover {
+    background: var(--lighten-color);
+  }
+
+  &:active {
+    background: var(--darken-color);
+  }
+
+  &.active {
+    color: $white;
+    background: var(--darken-active-color);
+    box-shadow: inset 0 0 9px rgba(11, 35, 51, 0.6);
+  }
+
+  &.disabled {
+    background: $extendeal-stewie;
+    color: $extendeal-meg;
+
+    &:hover, &:active {
+      box-shadow: none;
+      cursor: default;
+    }
+  }
+}

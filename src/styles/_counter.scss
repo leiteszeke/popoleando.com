@@ -1,0 +1,32 @@
+.counter {
+    background: $white;
+    border-radius: 15px;
+    height: 90px;
+    margin-top: -5px;
+    position: absolute;
+    right: 20px;
+    text-align: center;
+    width: 30px;
+    @include shadow2;
+
+    input {
+        background: none;
+        border: none;
+        font-size: 16px;
+        height: 30px;
+        text-align: center;
+        width: 30px;
+        @include main-font;
+    }
+
+    .buttons {
+        &.disabled {
+            color: $extendeal-lois;
+        }
+
+        color: $extendeal-mario;
+        height: 30px;
+        line-height: 30px;
+        width: 30px;
+    }
+}

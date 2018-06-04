@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+    @include main-font;
+}
+
+html, body {
+    min-height: 100%;
+    width: 100%;
+}
+
+body {
+    background: $extendeal-stewie;
+
+    > #root {
+        min-height: 100%;
+        width: 100%;
+
+        > div {
+            min-height: 100%;
+            width: 100%;
+        }
+
+        .background {
+            background: $extendeal-mario;
+            height: 100%;
+            left: 0;
+            position: fixed;
+            top: 0;
+            transition: 500ms;
+            width: 0%;
+            z-index: 1;
+        }
+
+        &.start {
+            .background {
+                width: 25%;
+            }
+        }
+    
+        &.middle {
+            .background {
+                width: 60%;
+            }
+        }
+    
+        &.finish {
+            .background {
+                width: 100%;
+            }
+        }
+    }
+
+    .wrapper {
+        height: auto;
+        min-height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 2;
+    }
+
+    .content {
+        padding-top: 70px;
+    }
+    
+}
