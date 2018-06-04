@@ -8,7 +8,8 @@ class CartItem extends Component {
         super();
         
         this.state = {
-            active: false
+            active: false,
+            step: 0.5
         }
     }
 
@@ -21,12 +22,11 @@ class CartItem extends Component {
         return (
             <div className={ (this.state.active ? `active ` : ``) + `product` }>
                 <img src={ Pizza } alt="Product" />      
-                <h2>Pizza de Muzzarela con Peperoni</h2>
-                <p className="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <h2>{ this.props.name }</h2>
                 <Stars />
-                <p className="unit">1 u</p>
-                <p className="price">$ 25</p>
-                <Counter />
+                <p className="unit">{ this.props.salesUnit }</p>
+                <p className="price">$ { this.props.price }</p>
+                <Counter step={ this.state.step } value={ this.props.quantity } />
             </div>
         );
     }

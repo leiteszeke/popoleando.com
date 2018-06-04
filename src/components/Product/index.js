@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import Pizza from '../../images/products/pizza.jpeg';
 import Stars from '../../components/Stars';
+import axios from 'axios';
+import { API_ROOT } from './../../env.js';
 
 class Product extends Component {
     constructor() {
         super();
         
         this.state = {
-            active: false
+            active: false,
+            product: {}
         }
     }
 
@@ -19,12 +22,12 @@ class Product extends Component {
     render() {
         return (
             <div onClick={ () => this.toggleProduct() } className={ (this.state.active ? `active ` : ``) + `product` }>
-                <img src={ Pizza } alt="Product" />      
-                <h2>Pizza de Muzzarela con Peperoni</h2>
-                <p className="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <img src={ Pizza } alt={ this.props.name } />      
+                <h2>{ this.props.name }</h2>
+                <p className="text">{ this.props.description }</p>
                 <Stars />
-                <p className="unit">1 u</p>
-                <p className="price">$ 25</p>
+                <p className="unit">{ this.props.salesUnit }</p>
+                <p className="price">$ { this.props.price }</p>
                 <i onClick={ (e) => this.addProduct(e) } className="button fa fa-plus"></i>
             </div>
         );
@@ -37,8 +40,21 @@ class Product extends Component {
 
     addProduct(e) {
         e.stopPropagation();
-        
-        window.location.href = '/cart';
+
+        let data = {
+            user_id: 1,
+            items: [
+                { product_id: this.props.id, unit_price: this.props.price, quantity: 1}
+            ]
+        }
+
+        axios.put(`${API_ROOT}/orders/current`, data)
+        .then( (res) => {
+            window.location.href = '/cart';
+        })
+        .catch( (err) => {
+            console.log(err);
+        });
     }
 }
 
