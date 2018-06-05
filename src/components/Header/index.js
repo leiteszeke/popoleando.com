@@ -22,7 +22,7 @@ class Header extends Component {
                             )
                         ]
                         : (
-                            '' //<i className="fa fa-bars"></i>
+                            <i onClick={ () => this.props.parent.toggleMenu() } className="fa fa-bars"></i>
                         )
                     }
                 </div>

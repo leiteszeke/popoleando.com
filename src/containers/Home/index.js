@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header';
+import Menu from '../../components/Menu';
 import Category from '../../components/Category';
 import axios from 'axios';
 import { API_ROOT } from './../../env.js';
@@ -10,8 +11,11 @@ class Home extends Component {
 
         this.state = {
             categories: [],
-            show: false
+            show: false,
+            menuState: false
         }
+        
+        this.toggleMenu = this.toggleMenu.bind(this);
     }
 
     componentDidMount() {
@@ -34,7 +38,8 @@ class Home extends Component {
     render() {
         return (
             <div id="home" className="wrapper">
-                <Header showCartBasket />   
+                <Header parent={ this } showCartBasket />   
+                <Menu className={ this.state.menuState ? `opened` : `closed` } />   
                 <div className="content">
                     { this.state.categories.map( (category) => {
                         return (
@@ -52,6 +57,11 @@ class Home extends Component {
         } else {
             window.location.href = "/login";
         }
+    }
+
+    toggleMenu() {
+        let menuState = this.state.menuState;
+        this.setState({ menu: !menuState });
     }
 }
 

@@ -68,7 +68,7 @@ class Cart extends Component {
                         <p className="title">Total:</p>
                         <p className="value bold color">$ { this.state.order.total_price }</p>
                     </div>
-                    { this.state.order.total_user_items > 0 
+                    { this.state.order.total_items > 0 
                         ? (
                             <div className="summary-footer">
                                 <i onClick={ () => this.cancelOrder() } className="fa fa-trash-o"></i>
