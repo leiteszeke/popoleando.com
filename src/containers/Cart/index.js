@@ -68,10 +68,14 @@ class Cart extends Component {
                         <p className="title">Total:</p>
                         <p className="value bold color">$ { this.state.order.total_price }</p>
                     </div>
-                    <div className="summary-footer">
-                        <i onClick={ () => this.cancelOrder() } className="fa fa-trash-o"></i>
-                        <button type="button">Confirmar</button>
-                    </div>
+                    { this.state.order.total_user_items > 0 
+                        ? (
+                            <div className="summary-footer">
+                                <i onClick={ () => this.cancelOrder() } className="fa fa-trash-o"></i>
+                                <button type="button">Confirmar</button>
+                            </div>
+                        ) : ''
+                    }
                 </div>
             </div>
         );
@@ -79,7 +83,7 @@ class Cart extends Component {
 
     cancelOrder() {
         if (window.confirm("Estas seguro que quieres eliminar tu pedido?")) {
-            axios.delete(`${API_ROOT}/orders/current`, { user_id: localStorage.getItem('user_id') })
+            axios.delete(`${API_ROOT}/orders/current`, { data: { user_id: localStorage.getItem('user_id') } }) 
             .then( (res) => {
                 window.location.href = "/";
             })
