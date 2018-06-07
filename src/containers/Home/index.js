@@ -20,12 +20,7 @@ class Home extends Component {
 
     componentDidMount() {
         this.manageUser();
-        let root = document.getElementById('root');
         
-        root.classList.remove('middle');
-        root.classList.remove('finish');
-        root.classList.add('start');
-
         axios.get(`${API_ROOT}/categories`)
         .then( (res) => {
             this.setState({ categories: res.data });
@@ -61,7 +56,7 @@ class Home extends Component {
 
     toggleMenu() {
         let menuState = this.state.menuState;
-        this.setState({ menu: !menuState });
+        this.setState({ menuState: !menuState });
     }
 }
 

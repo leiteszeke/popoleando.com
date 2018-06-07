@@ -19,12 +19,6 @@ class Cart extends Component {
     }
 
     componentDidMount() {
-        let root = document.getElementById('root');
-        
-        root.classList.remove('start');
-        root.classList.remove('middle');
-        root.classList.add('finish');
-
         axios.get(`${API_ROOT}/orders/current?user_id=${this.state.userId}`)
         .then( (res) => {
             this.setState({ order: res.data });

@@ -15,12 +15,6 @@ class Products extends Component {
         }
     }
     componentDidMount() {
-        let root = document.getElementById('root');
-        
-        root.classList.remove('start');
-        root.classList.remove('finish');
-        root.classList.add('middle');
-
         axios.get(`${API_ROOT}/categories/${this.props.match.params.categoryId}`)
         .then( (res) => {
             this.setState({ category: res.data });
