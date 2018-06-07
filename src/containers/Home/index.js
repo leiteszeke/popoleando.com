@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import Header from '../../components/Header';
 import Menu from '../../components/Menu';
 import Category from '../../components/Category';
@@ -11,6 +12,7 @@ class Home extends Component {
 
         this.state = {
             categories: [],
+            isLogged: true,
             show: false,
             menuState: false
         }
@@ -32,26 +34,32 @@ class Home extends Component {
 
     render() {
         return (
-            <div id="home" className="wrapper">
-                <Header parent={ this } showCartBasket />   
-                <Menu className={ this.state.menuState ? `opened` : `closed` } />   
-                <div className="content">
-                    { this.state.categories.map( (category) => {
-                        return (
-                            <Category key={ category.id } id={ category.id } title={ category.name } image={ category.image } total={ category.total_products } />
-                        )
-                    }) }
-                </div>   
-            </div>
+            !this.state.isLogged 
+                ? <Redirect to="/login" />
+                : (
+                    this.state.show 
+                        ? (
+                            <div id="home" className="wrapper">
+                                <Header parent={ this } showCartBasket />   
+                                <Menu className={ this.state.menuState ? `opened` : `closed` } />   
+                                <div className="content">
+                                    { this.state.categories.map( (category) => {
+                                        return (
+                                            <Category key={ category.id } id={ category.id } title={ category.name } image={ category.image } total={ category.total_products } />
+                                        )
+                                    }) }
+                                </div>  
+                            </div>
+                        ) : ''
+                )
+
         );
     }
 
     manageUser() {
         if (localStorage.getItem('user_id')) {
-            this.setState({ show: true });
-        } else {
-            window.location.href = "/login";
-        }
+            this.setState({ isLogged: true, show: true });
+        } 
     }
 
     toggleMenu() {

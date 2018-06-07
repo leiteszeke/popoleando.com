@@ -10,7 +10,8 @@ class Login extends Component {
         this.manageUser();
 
         this.state = {
-            users: []
+            users: [],
+            actualDeparment: 0
         }
     }
 
@@ -26,15 +27,37 @@ class Login extends Component {
 
     render() {
         return (
-            <div id="login">
-                <h2>Dime que empanada quieres y te dire quien eres</h2>
-                { this.state.users.map( (user) => {
-                    return (
-                        <Employee key={ user.id_user } id={ user.id_user } nick={ user.nick_user } />
-                    )
-                }) }
-            </div>
+            this.state.actualDeparment > 0 
+                ? (
+                    <div id="login" className="selected">
+                        <h2>Dime que empanada quieres y te dire quien eres</h2>
+                        <div className="employees">
+                            { this.state.users.map( (user) => {
+                                return (
+                                    this.state.actualDeparment === user.id_department 
+                                        ? <Employee className={ `department-` + user.id_department } department={ user.id_department } key={ user.id_user } id={ user.id_user } nick={ user.nick_user } />
+                                        : ''
+                                )
+                            }) } 
+                        </div>
+                    </div>
+                )
+                : (
+                    <div id="login">
+                        <div onClick={ () => this.selectDeparment(1) } className="department">Desarrollo</div>
+                        <div onClick={ () => this.selectDeparment(7) } className="department">Soporte & QA</div>
+                        <div onClick={ () => this.selectDeparment(5) } className="department">Arte</div>
+                    </div>
+                )
+                
         );
+    }
+
+    selectDeparment(departmentId) {
+        this.setState({ actualDeparment: departmentId }, () => {
+            let departments = document.getElementsByClassName('deparment');
+            
+        });
     }
 
     manageUser() {

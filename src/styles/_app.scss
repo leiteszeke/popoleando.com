@@ -5,7 +5,7 @@
 }
 
 html, body {
-    min-height: 100%;
+    height: 100%;
     width: 100%;
 }
 
@@ -13,11 +13,11 @@ body {
     background: $extendeal-wario;
 
     > #root {
-        min-height: 100%;
+        height: 100%;
         width: 100%;
 
         > div {
-            min-height: 100%;
+            height: 100%;
             width: 100%;
         }
     }

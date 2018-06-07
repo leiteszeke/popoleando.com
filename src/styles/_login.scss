@@ -1,5 +1,6 @@
 #login {
     display: flex; 
+    height: 100%;
     flex-wrap: wrap;
     justify-content: space-around;
 
@@ -8,5 +9,18 @@
         text-align: center;
         width: 100%;
         @include main-font;
+    }
+
+    .department {
+        align-items: center;
+        background: $extendeal-mario;
+        display: flex;
+        font-size: 20px;
+        height: 30%;
+        justify-content: center;
+        margin: 2.5% 0;
+        text-transform: uppercase;
+        width: 100%;
+        @include bold;
     }
 }
