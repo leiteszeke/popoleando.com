@@ -30,6 +30,8 @@
 
     .employees {
         display: block;
+        height: 75%;
+        overflow: auto;
         text-align: center;
         width: 100%;
     }

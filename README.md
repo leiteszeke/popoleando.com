@@ -1,7 +1,7 @@
-# Popoleando
+# Popoleando v1.0
 
 # Requerimientos
-  - Pacion por Popolo
+  - Pasion por Popolo
   - Amor por la Empanada Frita
   - Testeo
   - Tener hambre
