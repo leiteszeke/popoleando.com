@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import logoExtendeal from '../../images/logo-horizontal.svg';
 
 class Header extends Component {
     render() {
@@ -26,6 +27,7 @@ class Header extends Component {
                         )
                     }
                 </div>
+                <img src={ logoExtendeal } alt="Popoleando" />
                 <div className="header-right">
                     { this.props.showCartBasket 
                         ? (

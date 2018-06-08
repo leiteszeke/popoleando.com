@@ -53,7 +53,7 @@ class Home extends Component {
                                     }) }
                                 </div>  
                             </div>
-                        ) : ''
+                        ) : <Spinner ref="spinner" title="Cargando categorias..." />
                 )
 
         );
