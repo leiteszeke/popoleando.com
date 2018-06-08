@@ -18,6 +18,7 @@ header {
     
     i {
       color: $white;
+      cursor: pointer;
       font-size: 20px;
       text-align: center;
       width: 30px;
@@ -34,9 +35,33 @@ header {
 
     i {
       color: $white;
+      cursor: pointer;
       font-size: 18px;
       text-align: center;
       width: 30px;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  header {
+    height: 50px;
+    position: absolute;
+
+    .header-left {
+      padding-left: 15px;
+
+      i {
+        font-size: 16px;
+      }
+    }
+
+    .header-right {
+      padding-right: 15px;
+
+      i {
+        font-size: 16px;
+      }
     }
   }
 }

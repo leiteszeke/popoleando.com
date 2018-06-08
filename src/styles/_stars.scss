@@ -10,3 +10,14 @@
         }
     }
 }
+
+@media (min-width: 768px) {
+    .stars {
+        margin-left: 30px;
+        width: calc(100% - 30px);
+        
+        i {
+            font-size: 10px;
+        }
+    }
+}

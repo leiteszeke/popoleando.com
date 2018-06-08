@@ -25,8 +25,29 @@
         }
 
         color: $extendeal-mario;
+        cursor: pointer;
         height: 30px;
         line-height: 30px;
         width: 30px;
     }
+}
+
+@media (min-width: 768px) {
+    .counter {
+        height: 80px;
+        width: 25px;
+        
+        input {
+            font-size: 11px;
+            width: 25px;
+        }
+    
+        .buttons {
+            font-size: 12px;
+            height: 25px;
+            line-height: 25px;
+            width: 25px;
+        }
+    }
+
 }

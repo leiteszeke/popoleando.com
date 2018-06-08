@@ -5,3 +5,14 @@
         }
     }
 }
+
+@media (min-width: 768px) {
+    #products {
+        .content {
+            h1 {
+                font-size: 20px;
+                padding-left: 30px;
+            }
+        }
+    }
+}

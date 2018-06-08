@@ -19,6 +19,7 @@
     .department {
         align-items: center;
         background: $extendeal-mario;
+        cursor: pointer;
         display: flex;
         font-size: 20px;
         height: 30%;
@@ -39,8 +40,21 @@
     i {
         bottom: 10px;
         height: 20px;
+        cursor: pointer;
         left: 15px;
         position: fixed;
         width: 20px;
+    }
+}
+
+@media (min-width: 768px) {
+    #login {
+        .employees {
+            height: 72%;
+        }
+
+        i {
+            position: absolute;
+        }
     }
 }

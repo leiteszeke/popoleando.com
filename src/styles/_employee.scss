@@ -1,8 +1,9 @@
 
 .employee {
-    background-position: 0 0;
+    background-position: 0 150px;
     background-size: 150px 300px;
     border-radius: 50%;
+    cursor: pointer;
     display: inline-block;
     height: 150px;
     margin: 5px;
@@ -10,6 +11,15 @@
     @include shadow2;
 
     &:hover {
-        background-position: 0 150px;
+        background-position: 0 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .employee {
+        background-position: 0 125px;
+        background-size: 125px 250px;
+        height: 125px;
+        width: 125px;
     }
 }

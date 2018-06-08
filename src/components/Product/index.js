@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import Pizza from '../../images/products/pizza.jpeg';
 import Stars from '../../components/Stars';
 import axios from 'axios';
@@ -9,7 +10,8 @@ class Product extends Component {
         super();
         
         this.state = {
-            product: {}
+            product: {},
+            redirect: false
         }
     }
 
@@ -22,6 +24,11 @@ class Product extends Component {
                 <p className="unit">{ this.props.salesUnit }</p>
                 <p className="price">$ { this.props.price }</p>
                 <i onClick={ (e) => this.addProduct(e) } className="button fa fa-plus"></i>
+
+                { this.state.redirect 
+                    ? <Redirect to="/cart" />
+                    : ''
+                }
             </div>
         );
     }
@@ -38,7 +45,7 @@ class Product extends Component {
 
         axios.put(`${API_ROOT}/orders/current`, data)
         .then( (res) => {
-            window.location.href = '/cart';
+            this.setState({ redirect: true });
         })
         .catch( (err) => {
             console.log(err);

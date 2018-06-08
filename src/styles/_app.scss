@@ -31,3 +31,53 @@ body {
     }
     
 }
+
+
+@media (min-width: 768px) {
+    html, body {
+        height: 778px;
+        margin: 0 auto;
+        width: 350px;
+    }
+
+    html {
+        align-items: center;
+        background-size: cover;
+        display: flex;
+        height: 100%;
+        width: 100%;
+    }
+
+    body {
+        #root {
+            background: url('./images/iphone.png');
+            background-repeat: no-repeat;
+            background-size: auto 100%;
+            width: 100%;
+        
+            > div {
+                background: $extendeal-wario;
+                height: 523px;
+                left: 28px;
+                overflow: auto;
+                position: relative;
+                top: 122px;
+                width: 294px;    
+            }
+        }
+
+        .content {
+            padding-top: 70px;
+        }
+    }
+
+    ::-webkit-scrollbar { 
+        display: none; 
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}

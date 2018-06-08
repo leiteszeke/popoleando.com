@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import Header from '../../components/Header';
 import CartItem from '../../components/CartItem';
 import axios from 'axios';
@@ -14,6 +15,7 @@ class Cart extends Component {
                 items: [],
                 user_items: []
             },
+            redirect: false,
             userId: localStorage.getItem('user_id')
         }
     }
@@ -71,6 +73,11 @@ class Cart extends Component {
                         ) : ''
                     }
                 </div>
+
+                { this.state.redirect 
+                    ? <Redirect to="/" />
+                    : ''
+                }
             </div>
         );
     }
@@ -79,7 +86,7 @@ class Cart extends Component {
         if (window.confirm("Estas seguro que quieres eliminar tu pedido?")) {
             axios.delete(`${API_ROOT}/orders/current`, { data: { user_id: localStorage.getItem('user_id') } }) 
             .then( (res) => {
-                window.location.href = "/";
+                this.setState({ redirect: true });
             })
             .catch( (err) => {
                 console.log(err);
