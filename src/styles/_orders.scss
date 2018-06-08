@@ -4,4 +4,128 @@
             padding-left: 40px;
         }
     }
+
+    .order {
+        background: $white;
+        border-radius: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        height: 90px;
+        margin: 5% 10%;
+        min-height: 100px;
+        padding: 15px;
+        width: 80%;
+        @include shadow2;
+      
+        .image {
+            background: $white;
+            background-repeat: no-repeat;
+            background-position: center 0px;
+            background-size: 50px 50px;
+            border-radius: 35px;
+            height: 60px;
+            margin-left: -40px;
+            margin-top: 5px;
+            position: absolute;
+            width: 60px;
+            @include shadow2;
+        }
+      
+        h2 {
+            align-self: center;
+            font-size: 18px;
+            line-height: 30px;
+            margin-left: 30px;
+            max-height: 40px;
+            overflow: hidden;
+            width: calc(100% - 30px);
+            @include main-font;
+            @include semibold;
+        }
+      
+        p {
+            @include main-font;
+            @include semibold;
+        
+            &.unit {
+                color: $extendeal-lois;
+                font-size: 15px;
+                margin-left: 30px;
+                width: calc((100% - 30px) / 2);  
+            }
+        
+            &.price {
+                color: $extendeal-mario;
+                font-size: 16px;
+                padding-right: 10px;
+                text-align: right;
+                width: calc((100% - 30px) / 2);  
+            }
+        }
+
+        a {
+            height: 30px; 
+            width: 30px; 
+            position: absolute;
+            right: 22px;
+            
+            i.button {
+                background: $white;
+                border-radius: 15px;
+                color: $extendeal-mario;
+                cursor: pointer;
+                height: 30px;
+                line-height: 30px;
+                margin-top: 20px;
+                text-align: center;
+                transition: 1s;
+                width: 30px;
+                @include shadow2;
+            }   
+        }
+      
+    }
+}
+
+@media (min-width: 768px) {
+    #orders {
+        .content {
+            h1 {
+                font-size: 22px;
+                padding-left: 30px;
+            }
+        }
+
+        .order {
+            h2 {
+                font-size: 16px;
+            }
+
+            p {
+                &.unit {
+                    font-size: 12px;
+                }
+            
+                &.price {
+                    font-size: 14px;
+                }
+            }
+      
+            i.button {
+                background: $white;
+                border-radius: 15px;
+                color: $extendeal-mario;
+                cursor: pointer;
+                height: 30px;
+                line-height: 30px;
+                margin-top: 20px;
+                position: absolute;
+                margin-right: -8px;
+                text-align: center;
+                transition: 1s;
+                width: 30px;
+                @include shadow2;
+            }
+        }
+    }
 }

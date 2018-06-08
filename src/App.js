@@ -5,6 +5,7 @@ import Login from './containers/Login';
 import Products from './containers/Products';
 import Cart from './containers/Cart';
 import Orders from './containers/Orders';
+import Order from './containers/Order';
 import 'font-awesome/css/font-awesome.min.css';
 import 'material-design-icons/iconfont/material-icons.css';
 
@@ -17,6 +18,7 @@ const App = () => (
       <Route exact path="/products" component={ Products } />
       <Route exact path="/cart" component={ Cart } />
       <Route exact path="/orders" component={ Orders } />
+      <Route exact path="/orders/:orderId" component={ Order } />
     </div>
   </Router>  
 )

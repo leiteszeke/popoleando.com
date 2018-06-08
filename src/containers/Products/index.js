@@ -33,9 +33,14 @@ class Products extends Component {
                     { this.state.category.products.map( (product) => {
                         return <Product key={ product.id } id={ product.id } name={ product.name } description={ product.description } price={ product.unit_price } salesUnit={ product.sales_unit } />
                     }) }
+                    <i onClick={ () => this.goUp() } className="goUp fa fa-chevron-up"></i>
                 </div>   
             </div>
         );
+    }
+
+    goUp() {
+
     }
 }
 

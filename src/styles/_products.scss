@@ -3,7 +3,22 @@
         h1 {
             padding-left: 40px;
         }
+
+        i.goUp {
+            background: $extendeal-mario;
+            border-radius: 20px;
+            bottom: 10px;
+            color: $extendeal-wario;
+            cursor: pointer;
+            height: 40px;
+            line-height: 36px;
+            position: fixed;
+            right: 15px;
+            text-align: center;
+            width: 40px;
+        }
     }
+
 }
 
 @media (min-width: 768px) {
