@@ -37,7 +37,7 @@ class Product extends Component {
         e.stopPropagation();
 
         let data = {
-            user_id: 1,
+            user_id: localStorage.getItem('user_id'),
             items: [
                 { product_id: this.props.id, unit_price: this.props.price, quantity: 1}
             ]
