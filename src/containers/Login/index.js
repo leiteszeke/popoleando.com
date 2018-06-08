@@ -7,8 +7,6 @@ class Login extends Component {
     constructor() {
         super();
 
-        this.manageUser();
-
         this.state = {
             users: [],
             actualDeparment: 0
@@ -40,10 +38,11 @@ class Login extends Component {
                                 )
                             }) } 
                         </div>
+                        <i onClick={ () => this.removeDeparment() } className="fa fa-chevron-left"></i>
                     </div>
                 )
                 : (
-                    <div id="login">
+                    <div id="login" className="departments">
                         <div onClick={ () => this.selectDeparment(1) } className="department">Desarrollo</div>
                         <div onClick={ () => this.selectDeparment(7) } className="department">Soporte & QA</div>
                         <div onClick={ () => this.selectDeparment(5) } className="department">Arte</div>
@@ -54,16 +53,11 @@ class Login extends Component {
     }
 
     selectDeparment(departmentId) {
-        this.setState({ actualDeparment: departmentId }, () => {
-            let departments = document.getElementsByClassName('deparment');
-            
-        });
+        this.setState({ actualDeparment: departmentId });
     }
 
-    manageUser() {
-        if (localStorage.getItem('user_id')) {
-            window.location.href = "/"
-        }
+    removeDeparment() {
+        this.setState({ actualDeparment: 0 });
     }
 }
 

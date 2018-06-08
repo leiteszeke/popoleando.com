@@ -57,9 +57,14 @@ class Home extends Component {
     }
 
     manageUser() {
-        if (localStorage.getItem('user_id')) {
+        console.log(this.state);
+        console.log(localStorage);
+     
+        if (localStorage.getItem('user_id') != null) {
             this.setState({ isLogged: true, show: true });
-        } 
+        } else {
+            this.setState({ isLogged: false });
+        }
     }
 
     toggleMenu() {

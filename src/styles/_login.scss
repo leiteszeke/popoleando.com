@@ -1,8 +1,13 @@
 #login {
-    display: flex; 
     height: 100%;
     flex-wrap: wrap;
     justify-content: space-around;
+    overflow: hidden;
+
+    &.departments {
+        align-items: center;
+        display: flex;
+    }
 
     h2 {
         margin: 20px 0;
@@ -18,9 +23,22 @@
         font-size: 20px;
         height: 30%;
         justify-content: center;
-        margin: 2.5% 0;
         text-transform: uppercase;
         width: 100%;
         @include bold;
+    }
+
+    .employees {
+        display: block;
+        text-align: center;
+        width: 100%;
+    }
+
+    i {
+        bottom: 10px;
+        height: 20px;
+        left: 15px;
+        position: fixed;
+        width: 20px;
     }
 }
