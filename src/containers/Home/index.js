@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import Spinner from '../../components/Spinner';
 import Header from '../../components/Header';
 import Menu from '../../components/Menu';
 import Category from '../../components/Category';
@@ -21,6 +22,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
+        this.refs.spinner.start();
         this.manageUser();
         
         axios.get(`${API_ROOT}/categories`)
@@ -40,6 +42,7 @@ class Home extends Component {
                     this.state.show 
                         ? (
                             <div id="home" className="wrapper">
+                                <Spinner ref="spinner" title="Cargando categorias..." />
                                 <Header parent={ this } showCartBasket />   
                                 <Menu className={ this.state.menuState ? `opened` : `closed` } />   
                                 <div className="content">
