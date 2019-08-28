@@ -1,76 +1,53 @@
-import React, { Component } from 'react';
+// Dependencis
+import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
+import axios from 'axios';
+// Components
 import Spinner from '../../components/Spinner';
 import Header from '../../components/Header';
 import Menu from '../../components/Menu';
 import Category from '../../components/Category';
-import axios from 'axios';
+// Config
 import { API_ROOT } from './../../env.js';
 
-class Home extends Component {
-    constructor() {
-        super();
+const Home = () => {
+    const [categories, setCategories] = useState([]);
+    const [isLogged, setIsLogged] = useState(true);
+    const [showSpinner, setShowSpinner] = useState(true);
+    const [show, setShow] = useState(false);
+    const [menuState, setMenuState] = useState(false);
+    const toggleMenu = () => setMenuState(!menuState);
 
-        this.state = {
-            categories: [],
-            isLogged: true,
-            show: false,
-            menuState: false
+    const manageUser = () => {
+        if (localStorage.getItem('user_id') !== null) {
+            setIsLogged(true);
+            setShow(true);
+            return;
         }
-        
-        this.toggleMenu = this.toggleMenu.bind(this);
     }
 
-    componentDidMount() {
-        this.refs.spinner.start();
-        this.manageUser();
-        
+    useEffect(() => {
+        manageUser();
+
         axios.get(`${API_ROOT}/categories`)
-        .then( (res) => {
-            this.setState({ categories: res.data });
-        })
-        .catch( (err) => {
-            console.log(err);
-        });
-    }
+            .then(res => setCategories(res.data))
+            .finally(() => setShowSpinner(false));
+    }, []);
 
-    render() {
-        return (
-            !this.state.isLogged 
-                ? <Redirect to="/login" />
-                : (
-                    this.state.show 
-                        ? (
-                            <div id="home" className="wrapper">
-                                <Spinner ref="spinner" title="Cargando categorias..." />
-                                <Header parent={ this } showCartBasket />   
-                                <Menu className={ this.state.menuState ? `opened` : `closed` } />   
-                                <div className="content">
-                                    { this.state.categories.map( (category) => {
-                                        return (
-                                            <Category key={ category.id } id={ category.id } title={ category.name } image={ category.image } total={ category.total_products } />
-                                        )
-                                    }) }
-                                </div>  
-                            </div>
-                        ) : <Spinner ref="spinner" title="Cargando categorias..." />
-                )
+    if (!isLogged) return <Redirect to="/login" />;
 
-        );
-    }
+    if (!show) return <Spinner start={ showSpinner } title="Cargando categorias..." />;
 
-    manageUser() {
-        if (localStorage.getItem('user_id') != null) {
-            this.setState({ isLogged: true, show: true });
-        } else {
-            this.setState({ isLogged: false });
-        }
-    }
-
-    toggleMenu() {
-        let menuState = this.state.menuState;
-        this.setState({ menuState: !menuState });
-    }
+    return (
+        <div id="home" className="wrapper">
+            <Spinner start={ showSpinner } title="Cargando categorias..." />
+            <Header onToggle={ toggleMenu } showCartBasket />
+            <Menu className={ menuState ? `opened` : `closed` } />
+            <div className="content">
+                { categories.map(category => <Category key={ category.id } { ...category } />) }
+            </div>
+        </div>
+    );
 }
 
 export default Home;

@@ -1,54 +1,28 @@
-import React, { Component } from 'react';
+// Dependencies
+import React, { useEffect, useState } from 'react';
 
-class Counter extends Component {
-    constructor() {
-        super();
+const Counter = ({ defaultValue, onChange, step }) => {
+    const [value, setValue] = useState(defaultValue);
 
-        this.state = {
-            value: 0
-        }
+    const add = () => setValue(value + step);
 
-        this.changeQuantity = this.changeQuantity.bind(this);   
+    const remove = () => {
+        if (value === 0) return;
+        if (step >= 0.5 && step === 1) return;
+        return setValue(value - step);
     }
 
-    componentDidMount() {
-        let itemValue = this.props.fractionable === 1 ? parseFloat(this.props.value) : parseInt(this.props.value, 10);
-        this.setState({ value: itemValue });
-    }
+    useEffect(() => {
+        if (typeof onChange === 'function') return onChange(value);
+    }, [value]);
 
-    render() {
-        return (
-            <div className="counter">
-                <i onClick={ () => this.decrement() } className={ (this.state.value > 0 ? `` : `disabled `) + `buttons fa fa-minus` }></i>
-                <input type="number" value={ this.state.value } />
-                <i onClick={ () => this.increment() } className="buttons fa fa-plus"></i>
-            </div>
-        );
-    }
-
-    decrement() {
-        if (this.state.value > 0) {
-            let newValue = parseFloat(this.state.value) - parseFloat(this.props.step);
-            newValue = newValue < 0 ? 0 : (this.props.fractionable === 1 ? parseFloat(newValue) : parseInt(newValue, 10));
-
-            this.setState({ value: newValue }, () => {
-                this.changeQuantity();
-            });
-        }
-    }
-
-    changeQuantity() {
-        this.props.parent.setQuantity(this.state.value);
-    }
-
-    increment() {
-        let newValue = parseFloat(this.state.value) + parseFloat(this.props.step);
-        newValue = this.props.fractionable === 1 ? parseFloat(newValue) : parseInt(newValue, 10);
-
-        this.setState({ value: newValue }, () => {
-            this.changeQuantity();
-        });
-    }
+    return (
+        <div className="counter">
+            <i onClick={ remove } className={ (value > 0 ? `` : `disabled `) + `buttons fa fa-minus` } />
+            <input type="number" value={ value } step={ step } />
+            <i onClick={ add } className="buttons fa fa-plus"></i>
+        </div>
+    );
 }
 
 export default Counter;

@@ -1,38 +1,24 @@
-import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+// Dependencies
+import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
 
-class Menu extends Component {
-    constructor() {
-        super();
-
-        this.state = {
-            redirect: false
-        }
-    }
-    render() {
-        return (
-            ( this.state.redirect 
-                ? <Redirect to="/login" />
-                : (
-                    <nav className={ this.props.className + ` menu` }>
-                        <ul className="top-menu">
-                            <Link to="/">Home</Link>
-                            <Link to="/orders">Mis Pedidos</Link>
-                        </ul>
-                        <ul className="bottom-menu">
-                            <a onClick={ () => this.logout() }>Salir</a>
-                        </ul>
-                    </nav>
-                )
-            )
-        );
-    }
-
-    logout() {
+const Menu = ({ className, history }) => {
+    const logout = () => {
         localStorage.removeItem('user_id');
-        
-        this.setState({ redirect: true });
+        history.push('/login');
     }
+
+    return (
+        <nav className={ `${ className } menu` }>
+            <ul className="top-menu">
+                <Link to="/">Home</Link>
+                <Link to="/orders">Mis Pedidos</Link>
+            </ul>
+            <ul className="bottom-menu">
+                <div onClick={ logout }>Salir</div>
+            </ul>
+        </nav>
+    );
 }
 
-export default Menu;
+export default withRouter(Menu);

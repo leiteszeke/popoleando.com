@@ -1,56 +1,37 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import Pizza from '../../images/products/pizza.jpeg';
-import Stars from '../../components/Stars';
+// Dependencies
+import React from 'react';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
+// Components
+import Stars from '../../components/Stars';
+// Images
+import Pizza from '../../images/products/pizza.jpeg';
+// Config
 import { API_ROOT } from './../../env.js';
 
-class Product extends Component {
-    constructor() {
-        super();
-        
-        this.state = {
-            product: {},
-            redirect: false
-        }
-    }
+const Product = ({ id, name, history, unit_price, sales_unit }) => {
+    const user_id = localStorage.getItem('user_id');
+    const addProduct = () => {
+        const item = {
+            product_id: id,
+            unit_price,
+            quantity: 1,
+        };
 
-    render() {
-        return (
-            <div className="product">
-                <img src={ Pizza } alt={ this.props.name } />      
-                <h2>{ this.props.name }</h2>
-                <Stars />
-                <p className="unit">{ this.props.salesUnit }</p>
-                <p className="price">$ { this.props.price }</p>
-                <i onClick={ (e) => this.addProduct(e) } className="button fa fa-plus"></i>
+        axios.put(`${ API_ROOT }/orders/current`, { user_id, items: [item] })
+            .then(() => history.push('/cart'));
+    };
 
-                { this.state.redirect 
-                    ? <Redirect to="/cart" />
-                    : ''
-                }
-            </div>
-        );
-    }
-
-    addProduct(e) {
-        e.stopPropagation();
-
-        let data = {
-            user_id: localStorage.getItem('user_id'),
-            items: [
-                { product_id: this.props.id, unit_price: this.props.price, quantity: 1}
-            ]
-        }
-
-        axios.put(`${API_ROOT}/orders/current`, data)
-        .then( (res) => {
-            this.setState({ redirect: true });
-        })
-        .catch( (err) => {
-            console.log(err);
-        });
-    }
+    return (
+        <div className="product">
+            <img src={ Pizza } alt={ name } />
+            <h2>{ name }</h2>
+            <Stars />
+            <p className="unit">{ sales_unit }</p>
+            <p className="price">$ { unit_price }</p>
+            <i onClick={ addProduct } className="button fa fa-plus" />
+        </div>
+    );
 }
 
-export default Product;
+export default withRouter(Product);

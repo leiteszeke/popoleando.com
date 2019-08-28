@@ -1,47 +1,29 @@
-import React, { Component } from 'react';
+// Dependencies
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+// Components
 import Header from '../../components/Header';
 import Product from '../../components/Product';
-import axios from 'axios';
+// Config
 import { API_ROOT } from './../../env.js';
 
-class Products extends Component {
-    constructor() {
-        super();
+const Products = ({ match: { params: { categoryId } } }) => {
+    const [category, setCategory] = useState({});
 
-        this.state = {
-            category: {
-                products: []
-            }
-        }
-    }
-    componentDidMount() {
-        axios.get(`${API_ROOT}/categories/${this.props.match.params.categoryId}`)
-        .then( (res) => {
-            this.setState({ category: res.data });
-        })
-        .catch( (err) => {
-            console.log(err);
-        });
-    }
+    useEffect(() => {
+        axios.get(`${ API_ROOT }/categories/${ categoryId }`)
+            .then(res => setCategory(res.data));
+    }, []);
 
-    render() {
-        return (
-            <div id="products" className="wrapper">
-                <Header backButton backUrl="/" showCartBasket />   
-                <div className="content">
-                    <h1>{ this.state.category.name }</h1>
-                    { this.state.category.products.map( (product) => {
-                        return <Product key={ product.id } id={ product.id } name={ product.name } description={ product.description } price={ product.unit_price } salesUnit={ product.sales_unit } />
-                    }) }
-                    <i onClick={ () => this.goUp() } className="goUp fa fa-chevron-up"></i>
-                </div>   
+    return (
+        <div id="products" className="wrapper">
+            <Header backButton backUrl="/" showCartBasket />
+            <div className="content">
+                <h1>{ category.name }</h1>
+                { category.products.map(product => <Product key={ product.id } { ...product } />) }
             </div>
-        );
-    }
-
-    goUp() {
-
-    }
+        </div>
+    );
 }
 
 export default Products;

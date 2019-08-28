@@ -1,71 +1,55 @@
-import React, { Component } from 'react';
+// Dependencies
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+// Components
 import Employee from '../../components/Employee';
 import Spinner from '../../components/Spinner';
-import axios from 'axios';
+// Config
 import { API_ROOT } from './../../env.js';
 
-class Login extends Component {
-    constructor() {
-        super();
+const Login = () => {
+    const [users, setUsers] = useState([]);
+    const [department, setDepartment] = useState(0);
+    const [showSpinner, setShowSpinner] = useState(true);
 
-        this.state = {
-            users: [],
-            actualDeparment: 0
-        }
-    }
-
-    componentDidMount() {
-        if (this.refs.spinner)
-            this.refs.spinner.start();
-
+    useEffect(() => {
         axios.get(`${API_ROOT}/users`)
-        .then( (res) => {
-            this.setState({ users: res.data });
-            this.refs.spinner.finish();
-        })
-        .catch( (err) => {
-            console.log(err);
-        });
-    }
+        .then(res => setUsers(res.data))
+        .finally(() => setShowSpinner(false));
+    });
 
-    render() {
+    if (department === 0) {
         return (
-            this.state.actualDeparment > 0 
-                ? (
-                    <div id="login" className="selected">
-                        <Spinner ref="spinner" title="Cargando empleados..." />
-                        <h2>Dime que empanada quieres y te dire quien eres</h2>
-                        <div className="employees">
-                            { this.state.users.map( (user) => {
-                                return (
-                                    this.state.actualDeparment === user.id_department 
-                                        ? <Employee className={ `department-` + user.id_department } department={ user.id_department } key={ user.id_user } id={ user.id_user } nick={ user.nick_user } />
-                                        : ''
-                                )
-                            }) } 
-                        </div>
-                        <i onClick={ () => this.removeDeparment() } className="fa fa-chevron-left"></i>
-                    </div>
-                )
-                : (
-                    <div id="login" className="departments">
-                        <Spinner ref="spinner" title="Cargando departamentos..." />
-                        <div onClick={ () => this.selectDeparment(1) } className="department">Desarrollo</div>
-                        <div onClick={ () => this.selectDeparment(7) } className="department">Soporte & QA</div>
-                        <div onClick={ () => this.selectDeparment(5) } className="department">Dise&ntilde;o</div>
-                    </div>
-                )
-                
-        );
+            <div id="login" className="departments">
+                <Spinner start={ showSpinner } title="Cargando departamentos..." />
+                <div onClick={ () => setDepartment(1) } className="department">Desarrollo</div>
+                <div onClick={ () => setDepartment(7) } className="department">Soporte & QA</div>
+                <div onClick={ () => setDepartment(5) } className="department">Dise&ntilde;o</div>
+            </div>
+        )
     }
 
-    selectDeparment(departmentId) {
-        this.setState({ actualDeparment: departmentId });
-    }
+    const User = ({ id_department, id_user, nick_user }) => (
+        <Employee
+            className={ `department-${ id_department }` }
+            department={ id_department }
+            id={ id_user }
+            nick={ nick_user }
+        />
+    )
 
-    removeDeparment() {
-        this.setState({ actualDeparment: 0 });
-    }
+    return (
+        <div id="login" className="selected">
+            <Spinner start={ showSpinner } title="Cargando empleados..." />
+            <h2>Dime que empanada quieres y te dire quien eres</h2>
+            <div className="employees">
+                { users
+                    .filter(user => user.id_department === department)
+                    .map(user => <User key={ user.id } { ...user } />) }
+            </div>
+            <i onClick={ () => setDepartment(0) } className="fa fa-chevron-left" />
+        </div>
+    );
 }
 
 export default Login;

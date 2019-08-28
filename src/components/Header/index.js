@@ -1,50 +1,40 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// Dependencies
+import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
+// Images
 import logoExtendeal from '../../images/logo-horizontal.svg';
 
-class Header extends Component {
-    render() {
+const Header = ({ action, backButton, backUrl, history, toggleMenu, showCartBasket }) => {
+    const renderBackButton = () => {
+        if (action === 'back') {
+            return (
+                <div onClick={ () => history.goBack() }>
+                    <i className="fa fa-chevron-left"></i>
+                </div>
+            )
+        }
+
         return (
-            <header>
-                <div className="header-left">
-                    { this.props.backButton 
-                        ? [
-                            (this.props.action === 'back'
-                                ? (
-                                    <a key="1" onClick={ () => this.goBack() }> 
-                                        <i className="fa fa-chevron-left"></i>
-                                    </a>
-                                )
-                                : (
-                                    <Link key="2" to={ this.props.backUrl }> 
-                                        <i className="fa fa-chevron-left"></i>
-                                    </Link>
-                                )
-                            )
-                        ]
-                        : (
-                            <i onClick={ () => this.props.parent.toggleMenu() } className="fa fa-bars"></i>
-                        )
-                    }
-                </div>
-                <img src={ logoExtendeal } alt="Popoleando" />
-                <div className="header-right">
-                    { this.props.showCartBasket 
-                        ? (
-                            <Link to="/cart">
-                                <i className="fa fa-shopping-basket"></i>
-                            </Link>
-                        )
-                        : ''
-                    }
-                </div>
-            </header>
+            <Link to={ backUrl }>
+                <i className="fa fa-chevron-left"></i>
+            </Link>
         );
     }
 
-    goBack() {
-        window.history.back();
-    }
+    return (
+        <header>
+            <div className="header-left">
+                { backButton && renderBackButton() }
+                { !backButton && <i className="fa fa-bars" onClick={() => toggleMenu() } /> }
+            </div>
+
+            <img src={ logoExtendeal } alt="Popoleando" />
+
+            <div className="header-right">
+                { showCartBasket && <Link to="/cart"><i className="fa fa-shopping-basket"></i></Link> }
+            </div>
+        </header>
+    )
 }
 
-export default Header;
+export default withRouter(Header);

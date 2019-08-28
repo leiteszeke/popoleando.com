@@ -1,42 +1,25 @@
-import React, { Component } from 'react';
+// Dependencies
+import React from 'react';
 
-class Stars extends Component {
-    constructor() {
-        super();
-        
-        this.state = {
-            active: [false, false, false, false, false]
-        }
-    }
+const manageStars = (value = 0) => {
+    const emptyArray = [false, false, false, false, false];
+    if (value === 0) return emptyArray;
+    for (let i = 0; i < Math.ceil(parseFloat(value)); i++) emptyArray[i] = true;
+    return emptyArray;
+}
 
-    componentDidMount() {
-        this.manageStars();
-    }
+const Stars = ({ value }) => {
+    const stars = manageStars(value);
 
-    render() {
-        return (
-            <div className="stars">
-                <i className={ (this.state.active[0] ? `active ` : '') + `fa fa-star` }></i>
-                <i className={ (this.state.active[1] ? `active ` : '') + `fa fa-star` }></i>
-                <i className={ (this.state.active[2] ? `active ` : '') + `fa fa-star` }></i>
-                <i className={ (this.state.active[3] ? `active ` : '') + `fa fa-star` }></i>
-                <i className={ (this.state.active[4] ? `active ` : '') + `fa fa-star` }></i>
-            </div>
-        );
-    }
-
-    manageStars() {
-        if (this.props.value !== null) {
-            let value = Math.ceil(parseFloat(this.props.value));
-            let actives = this.state.active;
-
-            for (let i = 0; i < value; i++) {
-                actives[i] = true;
-            }
-
-            this.setState({ active: actives });
-        }
-    }
+    return (
+        <div className="stars">
+            <i className={ (stars[0] ? `active ` : '') + `fa fa-star` }></i>
+            <i className={ (stars[1] ? `active ` : '') + `fa fa-star` }></i>
+            <i className={ (stars[2] ? `active ` : '') + `fa fa-star` }></i>
+            <i className={ (stars[3] ? `active ` : '') + `fa fa-star` }></i>
+            <i className={ (stars[4] ? `active ` : '') + `fa fa-star` }></i>
+        </div>
+    );
 }
 
 export default Stars;

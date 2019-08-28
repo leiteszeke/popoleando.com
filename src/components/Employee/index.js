@@ -1,24 +1,23 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+// Dependencies
+import React from 'react';
+import { withRouter } from 'react-router-dom';
 
-class Employee extends Component {
-    constructor() {
-        super();
+const Employee = ({ history, ...employee }) => {
+    const imageUrl = `https://s3-us-west-2.amazonaws.com/extendeal/secret/employees/${ employee.nick }.jpg`;
 
-        this.state = {
-            redirect: false
-        }
-    }
-    render() {
-        return this.state.redirect 
-        ? <Redirect to="/" />
-        : <div onClick={ () => this.setUser() } className={ this.props.className + ` employee` } style={ { backgroundImage: `url(https://s3-us-west-2.amazonaws.com/extendeal/secret/employees/` + this.props.nick + `.jpg)` } }></div>
+    const setUser = () => {
+        localStorage.setItem('user_id', employee.id);
+        history.push('/');
     }
 
-    setUser() {
-        localStorage.setItem('user_id', this.props.id);
-        this.setState({ redirect: true });
-    }
+    return (
+        <div onClick={ setUser }
+            className={ employee.className + ` employee` }
+            style={ {
+                backgroundImage: `url(${ imageUrl })`
+            } }
+        />
+    )
 }
 
-export default Employee;
+export default withRouter(Employee);
