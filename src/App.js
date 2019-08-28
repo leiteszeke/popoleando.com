@@ -20,7 +20,7 @@ const App = () => (
       <Route exact path="/orders" component={ Orders } />
       <Route exact path="/orders/:orderId" component={ Order } />
     </div>
-  </Router>  
+  </Router>
 )
 
 export default App
