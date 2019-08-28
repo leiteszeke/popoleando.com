@@ -2,15 +2,19 @@ version: '2'
 
 services:
   popolo-db:
-    image: mongo:latest
+    image: mongo
     container_name: "popolo-db"
-    environment:
-      - MONGO_DATA_DIR=/data/db
-      - MONGO_LOG_DIR=/dev/null
-      - MONGODB_USER="root"
-      - MONGODB_PASS="root"
     volumes:
       - ./data/db:/data/db
+    expose:
+      - "27017"
+  popolo-api:
+    build: .
+    container_name: "popolo-api"
+    depends_on:
+      - popolo-db
     ports:
-      - 27017:27017
-    command: mongod --smallfiles --logpath=/dev/null # --quiet
+      - "8000:8000"
+    volumes:
+      - .:/opt/app
+      - /opt/app/node_modules
