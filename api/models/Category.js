@@ -4,6 +4,8 @@ const Schema = mongoose.Schema;
 
 const CategorySchema = new Schema({
     name: String,
+    photo: String,
+    totalProducts: Number,
 });
 
 const Category = mongoose.model('Category', CategorySchema);

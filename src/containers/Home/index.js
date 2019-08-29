@@ -30,7 +30,7 @@ const Home = () => {
         manageUser();
 
         axios.get(`${ API_ROOT }categories`)
-            .then(res => setCategories(res.data))
+            .then(res => setCategories(res.data.data))
             .finally(() => setShowSpinner(false));
     }, []);
 
@@ -44,7 +44,7 @@ const Home = () => {
             <Header onToggle={ toggleMenu } showCartBasket />
             <Menu className={ menuState ? `opened` : `closed` } />
             <div className="content">
-                { categories.map(category => <Category key={ category.id } { ...category } />) }
+                { categories.map(category => <Category key={ category._id } { ...category } />) }
             </div>
         </div>
     );

@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 // Images
 import Pizza from '../../images/products/pizza.jpeg';
 
-const Category = ({ id, title, total_products }) => (
+const Category = ({ _id, name, photo, totalProducts }) => (
     <div className="category">
-        <img src={ Pizza } alt={ title } />
-        <h2>{ title }</h2>
-        <p>{ total_products } items</p>
-        <Link to={ `/category/${ id }/products`}>
+        <img src={ photo || Pizza } alt={ name } />
+        <h2>{ name }</h2>
+        <p>{ totalProducts } items</p>
+        <Link to={ `/category/${ _id }/products`}>
             <i className="fa fa-chevron-right" />
         </Link>
     </div>
