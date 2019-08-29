@@ -1,5 +1,5 @@
 
-const host = 'http://localhost:9000'
+const host = 'http://localhost:8030'
 const apiVersion = '';
 
-export const API_ROOT = `${host}${apiVersion}/agro`;
+export const API_ROOT = `${host}${apiVersion}/`;

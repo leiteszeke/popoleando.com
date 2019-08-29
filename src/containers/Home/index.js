@@ -12,7 +12,7 @@ import { API_ROOT } from './../../env.js';
 
 const Home = () => {
     const [categories, setCategories] = useState([]);
-    const [isLogged, setIsLogged] = useState(true);
+    const [isLogged, setIsLogged] = useState(false);
     const [showSpinner, setShowSpinner] = useState(true);
     const [show, setShow] = useState(false);
     const [menuState, setMenuState] = useState(false);
@@ -29,7 +29,7 @@ const Home = () => {
     useEffect(() => {
         manageUser();
 
-        axios.get(`${API_ROOT}/categories`)
+        axios.get(`${ API_ROOT }categories`)
             .then(res => setCategories(res.data))
             .finally(() => setShowSpinner(false));
     }, []);

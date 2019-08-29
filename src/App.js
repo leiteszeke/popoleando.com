@@ -1,13 +1,17 @@
+// Dependencies
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import 'font-awesome/css/font-awesome.min.css';
+import 'material-design-icons/iconfont/material-icons.css';
+// Pages
 import Home from './containers/Home';
 import Login from './containers/Login';
 import Products from './containers/Products';
 import Cart from './containers/Cart';
 import Orders from './containers/Orders';
 import Order from './containers/Order';
-import 'font-awesome/css/font-awesome.min.css';
-import 'material-design-icons/iconfont/material-icons.css';
+// Styles
+import './App.scss';
 
 const App = () => (
   <Router>

@@ -21,7 +21,7 @@ const Cart = ({ history }) => {
 
     const cancelOrder = () => {
         if (window.confirm("Estas seguro que quieres eliminar tu pedido?")) {
-            axios.delete(`${ API_ROOT}/orders/current`, { data: { user_id } })
+            axios.delete(`${ API_ROOT }orders/current`, { data: { user_id } })
                 .then(() => history.push('/'));
         }
     }

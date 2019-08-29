@@ -13,7 +13,7 @@ const Login = () => {
     const [showSpinner, setShowSpinner] = useState(true);
 
     useEffect(() => {
-        axios.get(`${API_ROOT}/users`)
+        axios.get(`${ API_ROOT }users`)
         .then(res => setUsers(res.data))
         .finally(() => setShowSpinner(false));
     });
