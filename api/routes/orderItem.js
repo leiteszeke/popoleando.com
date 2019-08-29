@@ -29,17 +29,32 @@ router.post('/', (req, res) => {
             User.findOne().where({ _id: ordererId }).exec((userErr, user) => {
                 if (userErr || !order) return res.status(404).send({ data: userErr || [], error: true, message: 'user_not_found' });
 
-                const orderItem = new OrderItem({
-                    quantity,
-                    order,
-                    product,
-                    orderer: user,
-                });
+                OrderItem.findOne().where({ order, product, orderer: user }).exec((itemErr, item) => {
+                    if (itemErr) return res.status(400).send({ data: itemErr, error: true, message: 'bad_request_1' });
 
-                orderItem.save((err, oi) => {
-                    if (err) return res.status(400).send({ data: err, error: true, message: 'bad_request' });
-                    return res.send({ data: oi, error: false, message: 'order_item_created' });
-                });
+                    if (item) {
+                        item.quantity = quantity;
+                        OrderItem.updateOne({ _id: item._id }, item).exec(err => {
+                            if (err) return res.status(400).send({ data: err, error: true, message: 'bad_request_2' });
+                            OrderItem.findOne().where({ _id: item._id }).exec((error, oi) => {
+                                if (err) return res.status(400).send({ data: error, error: true, message: 'bad_request_3' });
+                                return res.send({ data: oi, error: false, message: 'order_item_updated' });
+                            });
+                        })
+                    } else {
+                        const orderItem = new OrderItem({
+                            quantity,
+                            order,
+                            product,
+                            orderer: user,
+                        });
+
+                        orderItem.save((err, oi) => {
+                            if (err) return res.status(400).send({ data: err, error: true, message: 'bad_request' });
+                            return res.send({ data: oi, error: false, message: 'order_item_created' });
+                        });
+                    }
+                })
             })
         })
     })

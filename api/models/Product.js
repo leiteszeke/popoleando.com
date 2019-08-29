@@ -1,13 +1,8 @@
 // Dependencies
-const mongoose = require('mongoose');
+const mongoose = require('./Models');
 const Schema = mongoose.Schema;
 // Schemas
 const { CategorySchema } = require('./Category');
-
-mongoose.connect('mongodb://localhost:27017/popoleando', (err, db) => {
-    if (err) throw err;
-    console.log('Connected');
-});
 
 const ProductSchema = new Schema({
     category: CategorySchema,

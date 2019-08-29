@@ -1,11 +1,6 @@
 // Dependencies
-const mongoose = require('mongoose');
+const mongoose = require('./Models');
 const Schema = mongoose.Schema;
-
-mongoose.connect('mongodb://localhost:27017/popoleando', (err, db) => {
-    if (err) throw err;
-    console.log('Connected');
-});
 
 const DepartmentSchema = new Schema({
     name: String,
