@@ -8,14 +8,14 @@ const { Department } = require('../models/Department');
 const { User } = require('../models/User');
 
 router.get('/', (req, res) => {
-    User.find().populate('department').exec((err, users) => {
+    User.find().exec((err, users) => {
         if (err) return res.status(400).send({ data: err, error: true, message: 'bad_request' });
         return res.send({ data: users, error: false, message: 'fetch_success' });
     });
 });
 
 router.get('/:id', (req, res) => {
-    if (!req.params || !req.params.id || !mongoose.Types.ObjectId.isValid(!req.params.id)) {
+    if (!req.params || !req.params.id || !mongoose.Types.ObjectId.isValid(req.params.id)) {
         return res.status(400).send({ data: [], error: true, message: 'bad_request' });
     }
 
@@ -56,7 +56,7 @@ router.post('/', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-    if (!req.params || !req.params.id || !mongoose.Types.ObjectId.isValid(!req.params.id)) {
+    if (!req.params || !req.params.id || !mongoose.Types.ObjectId.isValid(req.params.id)) {
         return res.status(400).send({ data: [], error: true, message: 'bad_request' });
     }
 
@@ -67,7 +67,7 @@ router.delete('/:id', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-    if (!req.params || !req.params.id || !mongoose.Types.ObjectId.isValid(!req.params.id)) {
+    if (!req.params || !req.params.id || !mongoose.Types.ObjectId.isValid(req.params.id)) {
         return res.status(400).send({ data: [], error: true, message: 'bad_request' });
     }
 

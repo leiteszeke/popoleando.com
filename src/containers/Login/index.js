@@ -20,7 +20,7 @@ const Login = () => {
 
         axios.get(`${ API_ROOT }users`)
             .then(res => setUsers(res.data.data));
-    });
+    }, []);
 
     if (departments.length > 0 && department === 0) {
         return (
@@ -28,8 +28,8 @@ const Login = () => {
                 <Spinner start={ showSpinner } title="Cargando departamentos..." />
                 { departments.map(department => (
                     <div
-                        key={ department.id }
-                        onClick={ () => setDepartment(department.id) }
+                        key={ department._id }
+                        onClick={ () => setDepartment(department._id) }
                         className="department"
                     >
                         { department.name }
@@ -39,12 +39,13 @@ const Login = () => {
         )
     }
 
-    const User = ({ department, _id, name }) => (
+    const User = ({ department, _id, name, photo }) => (
         <Employee
             className={ `department-${ department._id }` }
             department={ department._id }
             id={ _id }
             nick={ name }
+            photo={ photo }
         />
     )
 

@@ -1,7 +1,7 @@
 
 .employee {
-    background-position: 0 150px;
-    background-size: 150px 300px;
+    background-position: center;
+    background-size: cover;
     border-radius: 50%;
     cursor: pointer;
     display: inline-block;
@@ -17,8 +17,8 @@
 
 @media (min-width: 768px) {
     .employee {
-        background-position: 0 125px;
-        background-size: 125px 250px;
+        background-position: center;
+        background-size: cover;
         height: 125px;
         width: 125px;
     }

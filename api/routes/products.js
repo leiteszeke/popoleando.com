@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    if (!req.params || !req.params.id || !mongoose.Types.ObjectId.isValid(!req.params.id)) {
+    if (!req.params || !req.params.id || !mongoose.Types.ObjectId.isValid(req.params.id)) {
         return res.status(400).send({ data: [], error: true, message: 'bad_request' });
     }
 
@@ -41,7 +41,7 @@ router.post('/', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-    if (!req.params || !req.params.id || !mongoose.Types.ObjectId.isValid(!req.params.id)) {
+    if (!req.params || !req.params.id || !mongoose.Types.ObjectId.isValid(req.params.id)) {
         return res.status(400).send({ data: [], error: true, message: 'bad_request' });
     }
 
@@ -52,7 +52,7 @@ router.delete('/:id', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-    if (!req.params || !req.params.id || !mongoose.Types.ObjectId.isValid(!req.params.id)) {
+    if (!req.params || !req.params.id || !mongoose.Types.ObjectId.isValid(req.params.id)) {
         return res.status(400).send({ data: [], error: true, message: 'bad_request' });
     }
 

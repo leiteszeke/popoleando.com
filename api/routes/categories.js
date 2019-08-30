@@ -4,12 +4,12 @@ const mongoose = require('mongoose');
 // Router
 const router = express.Router();
 // Models
-const { Department } = require('../models/Department');
+const { Category } = require('../models/Category');
 
 router.get('/', (req, res) => {
-    Department.find().exec((err, departments) => {
+    Category.find().exec((err, categories) => {
         if (err) return res.status(400).send({ data: err, error: true, message: 'bad_request' });
-        return res.send({ data: departments, error: false, message: 'fetch_success' });
+        return res.send({ data: categories, error: false, message: 'fetch_success' });
     });
 });
 
@@ -18,26 +18,26 @@ router.get('/:id', (req, res) => {
         return res.status(400).send({ data: [], error: true, message: 'bad_request' });
     }
 
-    Department.findOne().where({ _id: req.params.id }).exec((err, department) => {
+    Category.findOne().where({ _id: req.params.id }).exec((err, category) => {
         if (err) return res.status(400).send({ data: err, error: true, message: 'bad_request' });
-        return res.send({ data: department, error: false, message: 'fetch_success' });
+        return res.send({ data: category, error: false, message: 'fetch_success' });
     });
 });
 
 router.post('/', (req, res) => {
     const { name } = req.body;
 
-    Department.findOne().where({ name }).exec((err, department) => {
+    Category.findOne().where({ name }).exec((err, category) => {
         if (err) return res.status(400).send({ data: err, error: true, message: 'bad_request' });
-        if (department) return res.send({ data: department, error: false, message: 'department_exists' });
+        if (category) return res.send({ data: category, error: false, message: 'category_exists' });
 
-        const newDepartment = new Department({
+        const newCategory = new Category({
             name,
         });
 
-        newDepartment.save({}, (newErr, resp) => {
+        newCategory.save({}, (newErr, resp) => {
             if (newErr) return res.status(400).send({ data: newErr, error: true, message: 'bad_request' });
-            return res.send({ data: resp, error: false, message: 'department_created' });
+            return res.send({ data: resp, error: false, message: 'category_created' });
         })
     });
 });
@@ -47,9 +47,9 @@ router.delete('/:id', (req, res) => {
         return res.status(400).send({ data: [], error: true, message: 'bad_request' });
     }
 
-    Department.deleteOne().where({ _id: req.params.id }).exec(err => {
+    Category.deleteOne().where({ _id: req.params.id }).exec(err => {
         if (err) return res.status(400).send({ data: err, error: true, message: 'bad_request' });
-        return res.send({ data: [], error: false, message: 'department_deleted' });
+        return res.send({ data: [], error: false, message: 'category_deleted' });
     });
 });
 
@@ -58,11 +58,11 @@ router.put('/:id', (req, res) => {
         return res.status(400).send({ data: [], error: true, message: 'bad_request' });
     }
 
-    Department.updateOne({ _id: req.params.id }, req.body).exec(err => {
+    Category.updateOne({ _id: req.params.id }, req.body).exec(err => {
         if (err) return res.status(400).send({ data: err, error: true, message: 'bad_request' });
-        Department.findOne().where({ _id: req.params.id }).exec((error, department) => {
+        Category.findOne().where({ _id: req.params.id }).exec((error, category) => {
             if (err) return res.status(400).send({ data: error, error: true, message: 'bad_request' });
-            return res.send({ data: department, error: false, message: 'department_updated' });
+            return res.send({ data: category, error: false, message: 'category_updated' });
         });
     });
 });
