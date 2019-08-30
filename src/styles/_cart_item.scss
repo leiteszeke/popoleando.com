@@ -5,7 +5,7 @@
   flex-wrap: wrap;
   margin: 5% 10%;
   min-height: 100px;
-  padding: 15px;
+  padding: 12px;
   width: 80%;
   @include shadow2;
 
@@ -45,7 +45,7 @@
       color: $extendeal-lois;
       font-size: 15px;
       margin-left: 45px;
-      width: calc((100% - 45px) / 2);  
+      width: calc((100% - 45px) / 2);
     }
 
     &.price {
@@ -53,7 +53,7 @@
       font-size: 16px;
       padding-right: 10px;
       text-align: right;
-      width: calc((100% - 45px) / 2);  
+      width: calc((100% - 45px) / 2);
     }
   }
 

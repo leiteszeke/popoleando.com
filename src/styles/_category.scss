@@ -5,7 +5,7 @@
   flex-wrap: wrap;
   height: 100px;
   margin: 5% 10%;
-  padding: 15px;
+  padding: 12px;
   width: 80%;
   @include shadow2;
 
@@ -46,9 +46,13 @@
     line-height: 30px;
     position: relative;
     text-align: center;
-    top: -40px;
+    top: -37px;
     width: 30px;
     @include shadow2;
+
+    i {
+      margin-left: 4px;
+    }
   }
 }
 

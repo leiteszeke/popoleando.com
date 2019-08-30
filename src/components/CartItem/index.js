@@ -12,11 +12,12 @@ import { API_ROOT } from './../../env.js';
 const CartItem = ({
     active,
     fractionable,
+    _id,
     name,
-    product_id,
     stars,
     sales_unit,
     unit_price,
+    orderId,
     quantity,
     setOrder
 }) => {
@@ -24,25 +25,19 @@ const CartItem = ({
     const step = fractionable ? 0.5 : 1;
 
     const setQuantity = (value) => {
-        const data = {
-            user_id,
-            items: [
-                {
-                    product_id,
-                    quantity: parseFloat(value),
-                    unit_price: parseFloat(unit_price)
-                }
-            ]
-        }
-
-        axios.put(`${ API_ROOT }orders/current`, data)
-            .then(res => setOrder(res.data));
+        axios.post(`${ API_ROOT }items`, {
+            orderId,
+            ordererId: user_id,
+            productId: _id,
+            quantity: value,
+        })
+            .then(res => setOrder(res.data.data));
     }
 
     return (
         <div className={ (active ? `active ` : ``) + `product` }>
             <img src={ Pizza } alt="Product" />
-            <h2>{ name }</h2>
+            <h4>{ name }</h4>
             <Stars value={ stars } />
             <p className="unit">{ sales_unit }</p>
             <p className="price">$ { unit_price }</p>

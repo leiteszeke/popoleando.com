@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const router = express.Router();
 // Models
 const { Order } = require('../models/Order');
+const { OrderItem } = require('../models/OrderItem');
 const { User } = require('../models/User');
 
 router.get('/', (req, res) => {
@@ -14,6 +15,25 @@ router.get('/', (req, res) => {
         return res.send({ data: orders, error: false, message: 'fetch_success' });
     });
 });
+
+router.get('/current', (req, res) => {
+    const date = moment().format('YYYY-MM-DD');
+
+    Order.findOne().where({ date, opened: true }).exec((err, order) => {
+        if (err) return res.status(400).send({ data: err, error: true, message: 'bad_request' });
+        if (!order) return res.send({ data: [], error: true, message: 'not_order_opened' });
+
+        OrderItem.find().where({ order }).exec((errItems, items) => {
+            if (errItems) return res.status(400).send({ data: errItems, error: true, message: 'bad_request' });
+            const data = {
+                ...order.toObject(),
+                items: items.map(i => i.toObject()),
+            }
+
+            return res.send({ data, error: false, message: 'fetch_success' });
+        });
+    });
+})
 
 router.get('/:id', (req, res) => {
     if (!req.params || !req.params.id || !mongoose.Types.ObjectId.isValid(req.params.id)) {

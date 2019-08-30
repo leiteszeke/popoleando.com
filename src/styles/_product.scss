@@ -6,7 +6,7 @@
   height: 110px;
   margin: 5% 10%;
   min-height: 100px;
-  padding: 15px;
+  padding: 12px;
   width: 80%;
   @include shadow2;
 
@@ -20,11 +20,11 @@
     @include shadow2;
   }
 
-  h2 {
+  h4 {
     align-self: center;
-    font-size: 18px;
-    line-height: 20px;
-    margin-left: 45px;
+    font-size: 16px;
+    line-height: 18px;
+    margin-left: 30px;
     max-height: 40px;
     overflow: hidden;
     width: calc(100% - 45px);
@@ -40,7 +40,7 @@
       color: $extendeal-lois;
       font-size: 15px;
       margin-left: 45px;
-      width: calc((100% - 45px) / 2);  
+      width: calc((100% - 45px) / 2);
     }
 
     &.price {
@@ -48,7 +48,7 @@
       font-size: 16px;
       padding-right: 10px;
       text-align: right;
-      width: calc((100% - 45px) / 2);  
+      width: calc((100% - 45px) / 2);
     }
   }
 
@@ -88,14 +88,14 @@
       &.unit {
         font-size: 12px;
         margin-left: 30px;
-        width: calc((100% - 30px) / 2);  
+        width: calc((100% - 30px) / 2);
       }
-  
+
       &.price {
         font-size: 14px;
         padding-right: 10px;
         text-align: right;
-        width: calc((100% - 30px) / 2);  
+        width: calc((100% - 30px) / 2);
       }
     }
   }

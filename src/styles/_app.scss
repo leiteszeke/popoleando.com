@@ -23,10 +23,12 @@ body {
     }
 
     .wrapper {
+        height: 100%;
         padding-bottom: 20px;
     }
 
     .content {
+        height: 100%;
         padding-top: 90px;
     }
 
@@ -45,6 +47,7 @@ body {
         background-size: cover;
         display: flex;
         height: 100%;
+        overflow: hidden;
         width: 100%;
     }
 
@@ -62,7 +65,7 @@ body {
                 overflow: auto;
                 position: relative;
                 top: 122px;
-                width: 294px;
+                width: 295px;
             }
         }
 

@@ -13,10 +13,10 @@
         height: 90px;
         margin: 5% 10%;
         min-height: 100px;
-        padding: 15px;
+        padding: 12px;
         width: 80%;
         @include shadow2;
-      
+
         .image {
             background: $white;
             background-repeat: no-repeat;
@@ -30,7 +30,7 @@
             width: 60px;
             @include shadow2;
         }
-      
+
         h2 {
             align-self: center;
             font-size: 18px;
@@ -42,33 +42,33 @@
             @include main-font;
             @include semibold;
         }
-      
+
         p {
             @include main-font;
             @include semibold;
-        
+
             &.unit {
                 color: $extendeal-lois;
                 font-size: 15px;
                 margin-left: 30px;
-                width: calc((100% - 30px) / 2);  
+                width: calc((100% - 30px) / 2);
             }
-        
+
             &.price {
                 color: $extendeal-mario;
                 font-size: 16px;
                 padding-right: 10px;
                 text-align: right;
-                width: calc((100% - 30px) / 2);  
+                width: calc((100% - 30px) / 2);
             }
         }
 
         a {
-            height: 30px; 
-            width: 30px; 
+            height: 30px;
+            width: 30px;
             position: absolute;
             right: 22px;
-            
+
             i.button {
                 background: $white;
                 border-radius: 15px;
@@ -81,9 +81,9 @@
                 transition: 1s;
                 width: 30px;
                 @include shadow2;
-            }   
+            }
         }
-      
+
     }
 }
 
@@ -105,12 +105,12 @@
                 &.unit {
                     font-size: 12px;
                 }
-            
+
                 &.price {
                     font-size: 14px;
                 }
             }
-      
+
             i.button {
                 background: $white;
                 border-radius: 15px;

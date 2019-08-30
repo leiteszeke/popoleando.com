@@ -1,10 +1,13 @@
 // Dependencies
 const mongoose = require('./Models');
 const Schema = mongoose.Schema;
+// Schemas
+const { ProductSchema } = require('./Product');
 
 const CategorySchema = new Schema({
     name: String,
     photo: String,
+    products: [ProductSchema],
     totalProducts: Number,
 });
 
