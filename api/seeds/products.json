@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Pizza de Muzzarela",
+    "description": "Pizza al molde con muzzarela",
+    "fractionable": true,
+    "salesUnit": 0.5,
+    "unitPrice": 200,
+    "relations": [
+      {
+        "name": "category",
+        "model": "Category",
+        "key": "name",
+        "value": "Pizza"
+      }
+    ]
+  },
+  {
+    "name": "Pizza de Jamon y Queso",
+    "description": "Pizza al molde con muzzarela y fetas de jamon fresco",
+    "fractionable": true,
+    "salesUnit": 0.125,
+    "unitPrice": 220,
+    "relations": [
+      {
+        "name": "category",
+        "model": "Category",
+        "key": "name",
+        "value": "Pizza"
+      }
+    ]
+  },
+  {
+    "name": "Empanada Jamon y Queso",
+    "description": "Empanada al Horno con Jamon Cocido y Queso Fresco",
+    "fractionable": false,
+    "salesUnit": 1,
+    "unitPrice": 30,
+    "relations": [
+      {
+        "name": "category",
+        "model": "Category",
+        "key": "name",
+        "value": "Empanada Horno"
+      }
+    ]
+  },
+  {
+    "name": "Empanada de Oregano",
+    "description": "Empanada Souffle con Muzzarela y Oregano",
+    "fractionable": false,
+    "salesUnit": 1,
+    "unitPrice": 30,
+    "relations": [
+      {
+        "name": "category",
+        "model": "Category",
+        "key": "name",
+        "value": "Empanada Frita"
+      }
+    ]
+  }
+]

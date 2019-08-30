@@ -1,0 +1,156 @@
+[
+  {
+    "name": "Ezequiel",
+    "lastname": "Leites",
+    "email": "ezequiel.leites@extendeal.com",
+    "photo": "eleites.jpg",
+    "relations": [
+      {
+        "name": "department",
+        "model": "Department",
+        "key": "name",
+        "value": "Desarrollo"
+      }
+    ]
+  },
+  {
+    "name": "Nicolas",
+    "lastname": "Villalonga",
+    "email": "nicolas.villalonga@extendeal.com",
+    "photo": "nvillalonga.jpg",
+    "relations": [
+      {
+        "name": "department",
+        "model": "Department",
+        "key": "name",
+        "value": "Desarrollo"
+      }
+    ]
+  },
+  {
+    "name": "Manuel",
+    "lastname": "Uso",
+    "email": "manuel.uso@extendeal.com",
+    "photo": "muso.jpg",
+    "relations": [
+      {
+        "name": "department",
+        "model": "Department",
+        "key": "name",
+        "value": "Desarrollo"
+      }
+    ]
+  },
+  {
+    "name": "Alaa",
+    "lastname": "Saleh",
+    "email": "alaa.saleh@extendeal.com",
+    "photo": "asaleh.jpg",
+    "relations": [
+      {
+        "name": "department",
+        "model": "Department",
+        "key": "name",
+        "value": "Desarrollo"
+      }
+    ]
+  },
+  {
+    "name": "Luis",
+    "lastname": "Barzola",
+    "email": "luis.barzola@extendeal.com",
+    "photo": "lbarzola.jpg",
+    "relations": [
+      {
+        "name": "department",
+        "model": "Department",
+        "key": "name",
+        "value": "Desarrollo"
+      }
+    ]
+  },
+  {
+    "name": "Luciano",
+    "lastname": "Peluso",
+    "email": "luciano.peluso@extendeal.com",
+    "photo": "lpeluso.jpg",
+    "relations": [
+      {
+        "name": "department",
+        "model": "Department",
+        "key": "name",
+        "value": "Desarrollo"
+      }
+    ]
+  },
+  {
+    "name": "Leandro",
+    "lastname": "Mendez",
+    "email": "leandro.mendez@extendeal.com",
+    "photo": "lmendez.jpg",
+    "relations": [
+      {
+        "name": "department",
+        "model": "Department",
+        "key": "name",
+        "value": "Desarrollo"
+      }
+    ]
+  },
+  {
+    "name": "Mariano",
+    "lastname": "Egui",
+    "email": "mariano.egui@extendeal.com",
+    "photo": "megui.jpg",
+    "relations": [
+      {
+        "name": "department",
+        "model": "Department",
+        "key": "name",
+        "value": "Desarrollo"
+      }
+    ]
+  },
+  {
+    "name": "Cirilo",
+    "lastname": "Liendo",
+    "email": "cirilo.liendo@extendeal.com",
+    "photo": "cliendo.jpg",
+    "relations": [
+      {
+        "name": "department",
+        "model": "Department",
+        "key": "name",
+        "value": "Diseño"
+      }
+    ]
+  },
+  {
+    "name": "Franco",
+    "lastname": "Ferrero",
+    "email": "franco.ferrero@extendeal.com",
+    "photo": "fferrero.jpg",
+    "relations": [
+      {
+        "name": "department",
+        "model": "Department",
+        "key": "name",
+        "value": "Diseño"
+      }
+    ]
+  },
+  {
+    "name": "Pablo",
+    "lastname": "Jimenez",
+    "email": "pablo.jimenez@extendeal.com",
+    "photo": "pjimenez.jpg",
+    "relations": [
+      {
+        "name": "department",
+        "model": "Department",
+        "key": "name",
+        "value": "QA"
+      }
+    ]
+  }
+]
