@@ -20,7 +20,7 @@ const Orders = () => {
     const toggleMenu = () => setMenuState(!menuState);
 
     useEffect(() => {
-        axios.get(`${ API_ROOT }/orders?user_id=${ userId }`)
+        axios.get(`${ API_ROOT }orders`)
             .then(res => setOrders(res.data))
             .finally(() => setShowSpinner(false));
     }, []);

@@ -18,14 +18,14 @@
 
     ul {
         height: 50%;
-        
+
         &.bottom-menu {
             align-items: flex-end;
             display: flex;
             flex-wrap: wrap;
         }
 
-        a {
+        a, div {
             color: $white;
             cursor: pointer;
             display: block;
@@ -46,7 +46,7 @@
         height: calc(100% - 50px);
         position: absolute;
         top: 50px;
-            
+
         &.opened {
             transition: 0.5s;
             width: 200px;

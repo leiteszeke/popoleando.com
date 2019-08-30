@@ -18,7 +18,7 @@ const Product = ({ id, name, history, unit_price, sales_unit }) => {
             quantity: 1,
         };
 
-        axios.put(`${ API_ROOT }/orders/current`, { user_id, items: [item] })
+        axios.put(`${ API_ROOT }orders/current`, { user_id, items: [item] })
             .then(() => history.push('/cart'));
     };
 

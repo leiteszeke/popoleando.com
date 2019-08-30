@@ -35,7 +35,7 @@ const CartItem = ({
             ]
         }
 
-        axios.put(`${ API_ROOT }/orders/current`, data)
+        axios.put(`${ API_ROOT }orders/current`, data)
             .then(res => setOrder(res.data));
     }
 

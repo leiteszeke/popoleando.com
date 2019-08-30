@@ -1,14 +1,20 @@
 // Dependencies
 import React from 'react';
 import { Link } from 'react-router-dom';
-// Images
-import Pizza from '../../images/products/pizza.jpeg';
+
+const basePath = 'https://s3-us-west-2.amazonaws.com/leites.dev/Popolo/';
+const Popolo = `${ basePath }popolo.jpg`;
+
+const onError = e => {
+    console.log(e);
+    e.target.src = Popolo;
+}
 
 const Category = ({ _id, name, photo, totalProducts }) => (
     <div className="category">
-        <img src={ photo || Pizza } alt={ name } />
+        <img src={ `${ basePath }${ photo }` } onError={ onError } alt={ name } />
         <h2>{ name }</h2>
-        <p>{ totalProducts } items</p>
+        <p>{ totalProducts || 0 } items</p>
         <Link to={ `/category/${ _id }/products`}>
             <i className="fa fa-chevron-right" />
         </Link>

@@ -140,6 +140,20 @@
     ]
   },
   {
+    "name": "Soledad",
+    "lastname": "Salaris",
+    "email": "soledad.salaris@extendeal.com",
+    "photo": "ssalaris.jpg",
+    "relations": [
+      {
+        "name": "department",
+        "model": "Department",
+        "key": "name",
+        "value": "Diseño"
+      }
+    ]
+  },
+  {
     "name": "Pablo",
     "lastname": "Jimenez",
     "email": "pablo.jimenez@extendeal.com",

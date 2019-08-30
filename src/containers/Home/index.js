@@ -4,31 +4,18 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 // Components
 import Spinner from '../../components/Spinner';
-import Header from '../../components/Header';
-import Menu from '../../components/Menu';
+import Layout from '../../components/Layout';
 import Category from '../../components/Category';
 // Config
 import { API_ROOT } from './../../env.js';
 
 const Home = () => {
+    const isLogged = localStorage.getItem('user_id') !== null;
+    const show = isLogged;
     const [categories, setCategories] = useState([]);
-    const [isLogged, setIsLogged] = useState(false);
     const [showSpinner, setShowSpinner] = useState(true);
-    const [show, setShow] = useState(false);
-    const [menuState, setMenuState] = useState(false);
-    const toggleMenu = () => setMenuState(!menuState);
-
-    const manageUser = () => {
-        if (localStorage.getItem('user_id') !== null) {
-            setIsLogged(true);
-            setShow(true);
-            return;
-        }
-    }
 
     useEffect(() => {
-        manageUser();
-
         axios.get(`${ API_ROOT }categories`)
             .then(res => setCategories(res.data.data))
             .finally(() => setShowSpinner(false));
@@ -39,14 +26,14 @@ const Home = () => {
     if (!show) return <Spinner start={ showSpinner } title="Cargando categorias..." />;
 
     return (
-        <div id="home" className="wrapper">
-            <Spinner start={ showSpinner } title="Cargando categorias..." />
-            <Header onToggle={ toggleMenu } showCartBasket />
-            <Menu className={ menuState ? `opened` : `closed` } />
-            <div className="content">
-                { categories.map(category => <Category key={ category._id } { ...category } />) }
-            </div>
-        </div>
+        <Layout
+            page="home"
+            showCartBasket={ true }
+            showSpinner={ showSpinner }
+            spinnerText="Cargando categorias..."
+        >
+            { categories.map(category => <Category key={ category._id } { ...category } />) }
+        </Layout>
     );
 }
 

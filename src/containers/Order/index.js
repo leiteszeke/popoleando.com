@@ -15,7 +15,7 @@ const Order = ({ match: { params: { orderId } } }) => {
     const [menuState, setMenuState] = useState(false);
 
     useEffect(() => {
-        axios.get(`${ API_ROOT }/orders/${ orderId }?user_id=${ userId }`)
+        axios.get(`${ API_ROOT }orders/${ orderId }`)
             .then(res => setOrder(res.data))
             .finally(() => setShowSpinner(false));
     }, [])

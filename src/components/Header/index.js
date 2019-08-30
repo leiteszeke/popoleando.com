@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 // Images
 import logoExtendeal from '../../images/logo-horizontal.svg';
 
-const Header = ({ action, backButton, backUrl, history, toggleMenu, showCartBasket }) => {
+const Header = ({ action, backButton, backUrl, history, onToggle, showCartBasket }) => {
     const renderBackButton = () => {
         if (action === 'back') {
             return (
@@ -25,7 +25,7 @@ const Header = ({ action, backButton, backUrl, history, toggleMenu, showCartBask
         <header>
             <div className="header-left">
                 { backButton && renderBackButton() }
-                { !backButton && <i className="fa fa-bars" onClick={() => toggleMenu() } /> }
+                { !backButton && <i className="fa fa-bars" onClick={ onToggle } /> }
             </div>
 
             <img src={ logoExtendeal } alt="Popoleando" />

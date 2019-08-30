@@ -43,6 +43,7 @@ const Login = () => {
         <Employee
             className={ `department-${ department._id }` }
             department={ department._id }
+            key={ _id }
             id={ _id }
             nick={ name }
             photo={ photo }
@@ -56,7 +57,7 @@ const Login = () => {
             <div className="employees">
                 { users
                     .filter(user => user.department._id === department)
-                    .map(user => <User key={ user.id } { ...user } />) }
+                    .map(user => <User key={ user._id } { ...user } />) }
             </div>
             <i onClick={ () => setDepartment(0) } className="fa fa-chevron-left" />
         </div>
